@@ -1,12 +1,6 @@
 "use client";
 
 import React from "react";
-import {
-  Typography,
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-} from "@material-tailwind/react";
 
 const FAQS = [
   {
@@ -32,41 +26,51 @@ const FAQS = [
 ];
 
 export function Faq() {
-  const [open, setOpen] = React.useState(0);
-  const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
+  const [open, setOpen] = React.useState<number | null>(null);
+  const handleOpen = (value: number) => setOpen(open === value ? null : value);
 
   return (
     <section className="bg-white py-20 px-8">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <Typography
-            variant="h2"
-            className="text-[#1A1A1A] text-3xl md:text-4xl font-bold mb-4"
-          >
+          <h2 className="text-[#1A1A1A] text-3xl md:text-4xl font-bold mb-4">
             FAQs
-          </Typography>
-          <Typography className="text-gray-500 max-w-xl mx-auto">
+          </h2>
+          <p className="text-gray-500 max-w-xl mx-auto">
             Answers to questions you might have about Scale Vault AI
-          </Typography>
+          </p>
         </div>
 
         <div className="mx-auto max-w-2xl">
           {FAQS.map(({ question, answer }, key) => (
-            <Accordion
-              key={key}
-              open={open === key + 1}
-              onClick={() => handleOpen(key + 1)}
-              className="border-b border-gray-200"
-            >
-              <AccordionHeader className="text-left text-[#1A1A1A] text-base font-medium border-0 py-5">
+            <div key={key} className="border-b border-gray-200">
+              <button
+                onClick={() => handleOpen(key)}
+                className="w-full text-left text-[#1A1A1A] text-base font-medium py-5 flex justify-between items-center"
+              >
                 {question}
-              </AccordionHeader>
-              <AccordionBody className="pb-5">
-                <Typography className="font-normal text-gray-500">
-                  {answer}
-                </Typography>
-              </AccordionBody>
-            </Accordion>
+                <svg
+                  className={`w-5 h-5 transition-transform ${
+                    open === key ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              {open === key && (
+                <div className="pb-5">
+                  <p className="font-normal text-gray-500">{answer}</p>
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>

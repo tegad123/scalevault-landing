@@ -1,6 +1,6 @@
 "use client";
 
-import { Typography } from "@material-tailwind/react";
+import Link from "next/link";
 
 const PAGES_LINKS = [
   { name: "Home", href: "/" },
@@ -24,21 +24,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl mx-auto mb-12">
           {/* Pages Column */}
           <div>
-            <Typography className="text-[#1A1A1A] font-semibold mb-4">
-              Pages
-            </Typography>
+            <h4 className="text-[#1A1A1A] font-semibold mb-4">Pages</h4>
             <ul className="space-y-2">
               {PAGES_LINKS.map((link) => (
                 <li key={link.name}>
-                  <Typography
-                    as="a"
+                  <Link
                     href={link.href}
-                    target={link.href.startsWith("http") ? "_blank" : "_self"}
-                    rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="text-gray-500 hover:text-gray-700 transition-colors text-sm"
                   >
                     {link.name}
-                  </Typography>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -46,19 +41,16 @@ export function Footer() {
 
           {/* Company Column */}
           <div>
-            <Typography className="text-[#1A1A1A] font-semibold mb-4">
-              Company
-            </Typography>
+            <h4 className="text-[#1A1A1A] font-semibold mb-4">Company</h4>
             <ul className="space-y-2">
               {COMPANY_LINKS.map((link) => (
                 <li key={link.name}>
-                  <Typography
-                    as="a"
+                  <Link
                     href={link.href}
                     className="text-gray-500 hover:text-gray-700 transition-colors text-sm"
                   >
                     {link.name}
-                  </Typography>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -66,19 +58,16 @@ export function Footer() {
 
           {/* Social Column */}
           <div>
-            <Typography className="text-[#1A1A1A] font-semibold mb-4">
-              Social
-            </Typography>
+            <h4 className="text-[#1A1A1A] font-semibold mb-4">Social</h4>
             <ul className="space-y-2">
               {SOCIAL_LINKS.map((link) => (
                 <li key={link.name}>
-                  <Typography
-                    as="a"
+                  <a
                     href={link.href}
                     className="text-gray-500 hover:text-gray-700 transition-colors text-sm"
                   >
                     {link.name}
-                  </Typography>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -87,9 +76,9 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="text-center border-t border-gray-200 pt-8">
-          <Typography className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-sm">
             &copy; Scale Vault AI 2025
-          </Typography>
+          </p>
         </div>
       </div>
     </footer>

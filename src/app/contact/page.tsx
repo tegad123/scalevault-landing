@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Typography, Button } from "@material-tailwind/react";
 import Link from "next/link";
 
 export default function ContactPage() {
@@ -30,29 +29,26 @@ export default function ContactPage() {
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
             <Link href="/">
-              <Typography className="text-[#1A1A1A] text-lg font-bold">
+              <span className="text-[#1A1A1A] text-lg font-bold">
                 Scale Vault AI
-              </Typography>
+              </span>
             </Link>
             <Link href="/contact">
-              <Button className="bg-gray-100 text-[#1A1A1A] rounded-full px-6 py-2 text-sm shadow-none hover:bg-gray-200">
+              <button className="bg-gray-100 text-[#1A1A1A] rounded-full px-6 py-2 text-sm hover:bg-gray-200">
                 Contact
-              </Button>
+              </button>
             </Link>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/login">
-              <Button
-                variant="filled"
-                className="bg-gray-100 text-[#1A1A1A] rounded-full px-6 py-2 shadow-none hover:bg-gray-200"
-              >
+              <button className="bg-gray-100 text-[#1A1A1A] rounded-full px-6 py-2 hover:bg-gray-200">
                 Log In
-              </Button>
+              </button>
             </Link>
             <Link href="/login">
-              <Button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-6 py-2 shadow-none hover:bg-[#E09000]">
+              <button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-6 py-2 hover:bg-[#E09000]">
                 Get started
-              </Button>
+              </button>
             </Link>
           </div>
         </div>
@@ -63,13 +59,13 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left Side - Text */}
           <div className="pt-8">
-            <Typography className="text-[#1A1A1A] text-5xl md:text-6xl font-bold leading-tight mb-8">
+            <h1 className="text-[#1A1A1A] text-5xl md:text-6xl font-bold leading-tight mb-8">
               Get in touch with the Scale Vault{" "}
               <span className="text-[#F5A623]">AI</span>
               <br />
               <span className="text-[#F5A623]">team</span>
-            </Typography>
-            <Typography className="text-gray-500 text-lg">
+            </h1>
+            <p className="text-gray-500 text-lg">
               Have questions or need support? Send us a message here or you can
               email us on{" "}
               <a
@@ -78,7 +74,7 @@ export default function ContactPage() {
               >
                 info@scalevault.ai
               </a>
-            </Typography>
+            </p>
           </div>
 
           {/* Right Side - Form */}
@@ -117,13 +113,12 @@ export default function ContactPage() {
                   required
                 />
               </div>
-              <Button
+              <button
                 type="submit"
-                fullWidth
-                className="bg-[#F5A623] text-[#1A1A1A] rounded-lg py-4 text-base font-semibold shadow-none hover:bg-[#E09000]"
+                className="w-full bg-[#F5A623] text-[#1A1A1A] rounded-lg py-4 text-base font-semibold hover:bg-[#E09000]"
               >
                 Send message
-              </Button>
+              </button>
             </form>
           </div>
         </div>
@@ -135,9 +130,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl">
             {/* Pages Column */}
             <div>
-              <Typography className="text-[#1A1A1A] font-semibold mb-4">
-                Pages
-              </Typography>
+              <h4 className="text-[#1A1A1A] font-semibold mb-4">Pages</h4>
               <ul className="space-y-2">
                 <li>
                   <Link
@@ -165,7 +158,7 @@ export default function ContactPage() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/privacy-policy"
                     className="text-gray-500 hover:text-[#1A1A1A] transition-colors text-sm"
                   >
                     Privacy Policy
@@ -176,9 +169,7 @@ export default function ContactPage() {
 
             {/* Company Column */}
             <div>
-              <Typography className="text-[#1A1A1A] font-semibold mb-4">
-                Company
-              </Typography>
+              <h4 className="text-[#1A1A1A] font-semibold mb-4">Company</h4>
               <ul className="space-y-2">
                 <li>
                   <Link
@@ -193,9 +184,7 @@ export default function ContactPage() {
 
             {/* Social Column */}
             <div>
-              <Typography className="text-[#1A1A1A] font-semibold mb-4">
-                Social
-              </Typography>
+              <h4 className="text-[#1A1A1A] font-semibold mb-4">Social</h4>
               <ul className="space-y-2">
                 <li>
                   <a

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, Suspense } from "react";
-import { Typography, Button } from "@material-tailwind/react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabase";
@@ -146,13 +145,12 @@ function LoginContent() {
           Forgot password?
         </a>
       </div>
-      <Button
+      <button
         type="submit"
-        fullWidth
-        className="bg-[#F5A623] text-[#1A1A1A] rounded-lg py-4 text-base font-semibold shadow-none hover:bg-[#E09000] mt-6"
+        className="w-full bg-[#F5A623] text-[#1A1A1A] rounded-lg py-4 text-base font-semibold hover:bg-[#E09000] mt-6"
       >
         Log In
-      </Button>
+      </button>
     </form>
   );
 
@@ -192,13 +190,12 @@ function LoginContent() {
           required
         />
       </div>
-      <Button
+      <button
         type="submit"
-        fullWidth
-        className="bg-[#F5A623] text-[#1A1A1A] rounded-lg py-4 text-base font-semibold shadow-none hover:bg-[#E09000] mt-6"
+        className="w-full bg-[#F5A623] text-[#1A1A1A] rounded-lg py-4 text-base font-semibold hover:bg-[#E09000] mt-6"
       >
         Continue
-      </Button>
+      </button>
     </form>
   );
 
@@ -246,9 +243,9 @@ function LoginContent() {
         {/* Question 1: Business Type */}
         {currentQuestion === 1 && (
           <div className="space-y-4">
-            <Typography className="text-[#1A1A1A] text-xl font-semibold mb-4">
+            <h3 className="text-[#1A1A1A] text-xl font-semibold mb-4">
               What type of education business do you run?
-            </Typography>
+            </h3>
             <div className="space-y-3">
               {businessTypes.map((type) => (
                 <label
@@ -277,9 +274,9 @@ function LoginContent() {
         {/* Question 2: Team Size */}
         {currentQuestion === 2 && (
           <div className="space-y-4">
-            <Typography className="text-[#1A1A1A] text-xl font-semibold mb-4">
+            <h3 className="text-[#1A1A1A] text-xl font-semibold mb-4">
               What&apos;s your team size?
-            </Typography>
+            </h3>
             <div className="space-y-3">
               {teamSizes.map((size) => (
                 <label
@@ -308,9 +305,9 @@ function LoginContent() {
         {/* Question 3: Challenge */}
         {currentQuestion === 3 && (
           <div className="space-y-4">
-            <Typography className="text-[#1A1A1A] text-xl font-semibold mb-4">
+            <h3 className="text-[#1A1A1A] text-xl font-semibold mb-4">
               What&apos;s your #1 challenge?
-            </Typography>
+            </h3>
             <div className="space-y-3">
               {challenges.map((challenge) => (
                 <label
@@ -339,25 +336,24 @@ function LoginContent() {
         {/* Navigation Buttons */}
         <div className="flex gap-4 pt-4">
           {currentQuestion > 1 && (
-            <Button
+            <button
               onClick={handleSurveyBack}
-              variant="outlined"
-              className="flex-1 border-gray-300 text-[#1A1A1A] rounded-lg py-4 text-base font-semibold shadow-none hover:bg-gray-50"
+              className="flex-1 border border-gray-300 text-[#1A1A1A] rounded-lg py-4 text-base font-semibold hover:bg-gray-50"
             >
               Back
-            </Button>
+            </button>
           )}
-          <Button
+          <button
             onClick={handleSurveyNext}
             disabled={!isCurrentQuestionValid()}
-            className={`flex-1 rounded-lg py-4 text-base font-semibold shadow-none ${
+            className={`flex-1 rounded-lg py-4 text-base font-semibold ${
               isCurrentQuestionValid()
                 ? "bg-[#F5A623] text-[#1A1A1A] hover:bg-[#E09000]"
                 : "bg-gray-300 text-gray-500 cursor-not-allowed"
             }`}
           >
             {currentQuestion === 3 ? "Book Your Call" : "Next"}
-          </Button>
+          </button>
         </div>
       </div>
     );
@@ -369,14 +365,14 @@ function LoginContent() {
       <header className="py-4 px-8 border-b border-gray-100">
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/">
-            <Typography className="text-[#1A1A1A] text-lg font-bold">
+            <span className="text-[#1A1A1A] text-lg font-bold">
               Scale Vault AI
-            </Typography>
+            </span>
           </Link>
           <Link href="/contact">
-            <Button className="bg-gray-100 text-[#1A1A1A] rounded-full px-6 py-2 text-sm shadow-none hover:bg-gray-200">
+            <button className="bg-gray-100 text-[#1A1A1A] rounded-full px-6 py-2 text-sm hover:bg-gray-200">
               Contact
-            </Button>
+            </button>
           </Link>
         </div>
       </header>
@@ -413,14 +409,14 @@ function LoginContent() {
               </div>
 
               {/* Title */}
-              <Typography className="text-[#1A1A1A] text-3xl font-bold text-center mb-2">
+              <h1 className="text-[#1A1A1A] text-3xl font-bold text-center mb-2">
                 {mode === "login" ? "Welcome back" : "Create your account"}
-              </Typography>
-              <Typography className="text-gray-500 text-center mb-8">
+              </h1>
+              <p className="text-gray-500 text-center mb-8">
                 {mode === "login"
                   ? "Enter your credentials to access your account"
                   : "Get started with Scale Vault AI today"}
-              </Typography>
+              </p>
 
               {/* Form */}
               {mode === "login" ? renderLogin() : renderSignup()}
@@ -433,12 +429,10 @@ function LoginContent() {
               </div>
 
               {/* Google Sign In */}
-              <Button
-                fullWidth
-                variant="outlined"
+              <button
                 onClick={handleGoogleSignIn}
                 disabled={isLoading}
-                className="border-gray-200 text-[#1A1A1A] rounded-lg py-4 text-base font-medium shadow-none hover:bg-gray-50 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full border border-gray-200 text-[#1A1A1A] rounded-lg py-4 text-base font-medium hover:bg-gray-50 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <span>Connecting...</span>
@@ -465,10 +459,10 @@ function LoginContent() {
                     Continue with Google
                   </>
                 )}
-              </Button>
+              </button>
 
               {/* Footer text */}
-              <Typography className="text-center text-gray-500 text-sm mt-8">
+              <p className="text-center text-gray-500 text-sm mt-8">
                 {mode === "login" ? (
                   <>
                     Don&apos;t have an account?{" "}
@@ -490,18 +484,18 @@ function LoginContent() {
                     </button>
                   </>
                 )}
-              </Typography>
+              </p>
             </>
           )}
 
           {mode === "survey" && (
             <>
-              <Typography className="text-[#1A1A1A] text-3xl font-bold text-center mb-2">
+              <h1 className="text-[#1A1A1A] text-3xl font-bold text-center mb-2">
                 Short Application
-              </Typography>
-              <Typography className="text-gray-500 text-center mb-8">
+              </h1>
+              <p className="text-gray-500 text-center mb-8">
                 Help us understand your business so we can serve you better
-              </Typography>
+              </p>
               {renderSurvey()}
             </>
           )}

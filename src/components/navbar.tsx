@@ -1,13 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Navbar as MTNavbar,
-  Collapse,
-  Button,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
+import Link from "next/link";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
 
 export function Navbar() {
@@ -23,79 +17,69 @@ export function Navbar() {
   }, []);
 
   return (
-    <MTNavbar
-      shadow={true}
-      fullWidth
-      blurred={false}
-      color="white"
-      className="sticky top-0 z-50 border-0 bg-white"
-    >
-      <div className="container mx-auto flex items-center justify-between">
-        <Typography className="text-lg font-bold text-[#1A1A1A]">
+    <nav className="sticky top-0 z-50 bg-white shadow-sm">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <Link href="/" className="text-lg font-bold text-[#1A1A1A]">
           Scale Vault AI
-        </Typography>
+        </Link>
         <div className="hidden items-center gap-6 lg:flex">
-          <Typography
-            as="a"
+          <Link
             href="/contact"
             className="font-medium text-[#1A1A1A] hover:text-gray-600 transition-colors"
           >
             Contact
-          </Typography>
-          <Typography
-            as="a"
+          </Link>
+          <Link
             href="/login?tab=login"
             className="font-medium text-[#1A1A1A] hover:text-gray-600 transition-colors"
           >
             Log in
-          </Typography>
-          <a href="/login">
-            <Button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-6 hover:bg-[#E09000] shadow-none">
+          </Link>
+          <Link href="/login">
+            <button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-6 py-2 hover:bg-[#E09000]">
               Get started
-            </Button>
-          </a>
+            </button>
+          </Link>
         </div>
-        <IconButton
-          variant="text"
-          color="gray"
+        <button
           onClick={handleOpen}
-          className="ml-auto inline-block lg:hidden"
+          className="ml-auto inline-block lg:hidden p-2 text-gray-700"
         >
           {open ? (
-            <XMarkIcon strokeWidth={2} className="h-6 w-6" />
+            <XMarkIcon className="h-6 w-6" />
           ) : (
-            <Bars3Icon strokeWidth={2} className="h-6 w-6" />
+            <Bars3Icon className="h-6 w-6" />
           )}
-        </IconButton>
+        </button>
       </div>
-      <Collapse open={open}>
-        <div className="container mx-auto mt-4 rounded-lg bg-white px-6 py-5">
+      {/* Mobile Menu */}
+      {open && (
+        <div className="container mx-auto mt-2 rounded-lg bg-white px-6 py-5 lg:hidden">
           <div className="flex flex-col gap-4">
-            <Typography
-              as="a"
+            <Link
               href="/contact"
               className="font-medium text-[#1A1A1A]"
+              onClick={() => setOpen(false)}
             >
               Contact
-            </Typography>
-            <Typography
-              as="a"
+            </Link>
+            <Link
               href="/login?tab=login"
               className="font-medium text-[#1A1A1A]"
+              onClick={() => setOpen(false)}
             >
               Log in
-            </Typography>
-            <a href="/login">
-              <Button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-6 hover:bg-[#E09000] shadow-none">
+            </Link>
+            <Link href="/login" onClick={() => setOpen(false)}>
+              <button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-6 py-2 hover:bg-[#E09000]">
                 Get started
-              </Button>
-            </a>
+              </button>
+            </Link>
           </div>
         </div>
-      </Collapse>
-    </MTNavbar>
+      )}
+    </nav>
   );
 }
 
 export default Navbar;
-

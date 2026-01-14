@@ -1,6 +1,5 @@
 "use client";
 
-import { Typography } from "@material-tailwind/react";
 import {
   ChatBubbleLeftRightIcon,
   ChartBarIcon,
@@ -19,9 +18,9 @@ function Features() {
   return (
     <div className="bg-white py-20">
       <div className="container mx-auto px-8">
-        <Typography className="text-center text-gray-500 text-sm uppercase tracking-wider mb-12">
+        <p className="text-center text-gray-500 text-sm uppercase tracking-wider mb-12">
           Take action from insights
-        </Typography>
+        </p>
         <div className="flex justify-center items-center gap-12 md:gap-20">
           {ICONS.map((Icon, idx) => (
             <div key={idx} className="flex items-center justify-center">
@@ -35,4 +34,3 @@ function Features() {
 }
 
 export default Features;
-

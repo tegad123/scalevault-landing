@@ -1,7 +1,5 @@
 "use client";
 
-import { Typography, Card, CardBody } from "@material-tailwind/react";
-
 const TESTIMONIALS = [
   {
     quote:
@@ -27,29 +25,24 @@ function Testimonials() {
   return (
     <div className="bg-[#FAFAFA] py-20">
       <div className="container mx-auto px-8">
-        <Typography
-          variant="h2"
-          className="text-[#1A1A1A] text-3xl md:text-4xl font-bold text-center mb-16"
-        >
+        <h2 className="text-[#1A1A1A] text-3xl md:text-4xl font-bold text-center mb-16">
           Kind words from customers
-        </Typography>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {TESTIMONIALS.map((testimonial, idx) => (
-            <Card key={idx} className="bg-white shadow-sm border border-gray-100">
-              <CardBody className="p-6">
-                <Typography className="text-gray-600 text-base mb-6 leading-relaxed">
-                  &quot;{testimonial.quote}&quot;
-                </Typography>
-                <div>
-                  <Typography className="text-[#1A1A1A] font-semibold">
-                    {testimonial.name}
-                  </Typography>
-                  <Typography className="text-gray-500 text-sm">
-                    {testimonial.business}
-                  </Typography>
-                </div>
-              </CardBody>
-            </Card>
+            <div key={idx} className="bg-white shadow-sm border border-gray-100 rounded-lg p-6">
+              <p className="text-gray-600 text-base mb-6 leading-relaxed">
+                &quot;{testimonial.quote}&quot;
+              </p>
+              <div>
+                <p className="text-[#1A1A1A] font-semibold">
+                  {testimonial.name}
+                </p>
+                <p className="text-gray-500 text-sm">
+                  {testimonial.business}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -58,4 +51,3 @@ function Testimonials() {
 }
 
 export default Testimonials;
-
