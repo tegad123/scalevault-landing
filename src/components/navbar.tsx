@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Navbar as MTNavbar,
@@ -6,55 +8,10 @@ import {
   IconButton,
   Typography,
 } from "@material-tailwind/react";
-import {
-  RectangleStackIcon,
-  UserCircleIcon,
-  CommandLineIcon,
-  Squares2X2Icon,
-  XMarkIcon,
-  Bars3Icon,
-} from "@heroicons/react/24/solid";
-
-interface NavItemProps {
-  children: React.ReactNode;
-  href?: string;
-}
-
-function NavItem({ children, href }: NavItemProps) {
-  return (
-    <li>
-      <Typography
-        as="a"
-        href={href || "#"}
-        target={href ? "_blank" : "_self"}
-        variant="paragraph"
-        className="flex items-center gap-2 font-medium"
-      >
-        {children}
-      </Typography>
-    </li>
-  );
-}
-
-const NAV_MENU = [
-  {
-    name: "Page",
-    icon: RectangleStackIcon,
-  },
-  {
-    name: "Account",
-    icon: UserCircleIcon,
-  },
-  {
-    name: "Docs",
-    icon: CommandLineIcon,
-    href: "https://www.material-tailwind.com/docs/react/installation",
-  },
-];
+import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
-  const [isScrolling, setIsScrolling] = React.useState(false);
 
   const handleOpen = () => setOpen((cur) => !cur);
 
@@ -65,58 +22,42 @@ export function Navbar() {
     );
   }, []);
 
-  React.useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > 0) {
-        setIsScrolling(true);
-      } else {
-        setIsScrolling(false);
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <MTNavbar
-      shadow={false}
+      shadow={true}
       fullWidth
       blurred={false}
-      color={isScrolling ? "white" : "transparent"}
-      className="fixed top-0 z-50 border-0"
+      color="white"
+      className="sticky top-0 z-50 border-0 bg-white"
     >
       <div className="container mx-auto flex items-center justify-between">
-        <Typography
-          color={isScrolling ? "blue-gray" : "white"}
-          className="text-lg font-bold"
-        >
-          Material Tailwind
+        <Typography className="text-lg font-bold text-[#1A1A1A]">
+          Scale Vault AI
         </Typography>
-        <ul
-          className={`ml-10 hidden items-center gap-6 lg:flex ${
-            isScrolling ? "text-gray-900" : "text-white"
-          }`}
-        >
-          {NAV_MENU.map(({ name, icon: Icon, href }) => (
-            <NavItem key={name} href={href}>
-              <Icon className="h-5 w-5" />
-              <span>{name}</span>
-            </NavItem>
-          ))}
-        </ul>
-        <div className="hidden items-center gap-4 lg:flex">
-          <Button color={isScrolling ? "gray" : "white"} variant="text">
+        <div className="hidden items-center gap-6 lg:flex">
+          <Typography
+            as="a"
+            href="/contact"
+            className="font-medium text-[#1A1A1A] hover:text-gray-600 transition-colors"
+          >
+            Contact
+          </Typography>
+          <Typography
+            as="a"
+            href="/login?tab=login"
+            className="font-medium text-[#1A1A1A] hover:text-gray-600 transition-colors"
+          >
             Log in
-          </Button>
-          <a href="https://www.material-tailwind.com/blocks" target="_blank">
-            <Button color={isScrolling ? "gray" : "white"}>blocks</Button>
+          </Typography>
+          <a href="/login">
+            <Button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-6 hover:bg-[#E09000] shadow-none">
+              Get started
+            </Button>
           </a>
         </div>
         <IconButton
           variant="text"
-          color={isScrolling ? "gray" : "white"}
+          color="gray"
           onClick={handleOpen}
           className="ml-auto inline-block lg:hidden"
         >
@@ -129,18 +70,25 @@ export function Navbar() {
       </div>
       <Collapse open={open}>
         <div className="container mx-auto mt-4 rounded-lg bg-white px-6 py-5">
-          <ul className="flex flex-col gap-4 text-gray-900">
-            {NAV_MENU.map(({ name, icon: Icon, href }) => (
-              <NavItem key={name} href={href}>
-                <Icon className="h-5 w-5" />
-                {name}
-              </NavItem>
-            ))}
-          </ul>
-          <div className="mt-6 flex items-center gap-4">
-            <Button variant="text">Log in</Button>
-            <a href="https://www.materila-tailwind.com/blocks" target="_blank">
-              <Button color="gray">blocks</Button>
+          <div className="flex flex-col gap-4">
+            <Typography
+              as="a"
+              href="/contact"
+              className="font-medium text-[#1A1A1A]"
+            >
+              Contact
+            </Typography>
+            <Typography
+              as="a"
+              href="/login?tab=login"
+              className="font-medium text-[#1A1A1A]"
+            >
+              Log in
+            </Typography>
+            <a href="/login">
+              <Button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-6 hover:bg-[#E09000] shadow-none">
+                Get started
+              </Button>
             </a>
           </div>
         </div>
@@ -150,3 +98,4 @@ export function Navbar() {
 }
 
 export default Navbar;
+

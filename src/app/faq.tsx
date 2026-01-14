@@ -1,28 +1,33 @@
 "use client";
 
 import React from "react";
-import { Typography, Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
+import {
+  Typography,
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+} from "@material-tailwind/react";
 
 const FAQS = [
   {
-    title: "1. How do I register for the AI Conference 2023?",
-    desc: "You can register for the AI Conference 2023 by visiting our registration page. Follow the simple steps to complete your registration and secure your spot at the conference.",
+    question: "What is Scale Vault AI?",
+    answer:
+      "We create custom AI automation systems for online education businesses. Our solutions handle student support, sales conversations, and course delivery so you can focus on teaching and growing revenue.",
   },
   {
-    title: "2. What are the registration fees, and what is included?",
-    desc: "It really matters and then like it really doesn't matter. What matters is the people who are sparked by it. And the people who are like offended by it, it doesn't matter. Because it's about motivating the doers. Because I'm here to follow my dreams and inspire other people to follow their dreams, too. We're not always in the position that we want to be at. We're constantly growing. We're constantly making mistakes. We're constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game of life you need to appreciate every moment. A lot of people don't appreciate the moment until it's passed.",
+    question: "How much does it cost?",
+    answer:
+      "Every business is different, so we create custom solutions based on your specific needs. Pricing is discussed during your free strategy call. We're not an agency with set retainers - we build what you actually need.",
   },
   {
-    title: "3. Can I get a refund if I need to cancel my registration?",
-    desc: "The time is now for it to be okay to be great. People in this world shun people for being great. For being a bright color. For standing out. But the time is now to be okay to be the greatest you. Would you believe in what you believe in, if you were the only one who believed it? If everything I did failed - which it doesn't, it actually succeeds - just the fact that I'm willing to fail is an inspiration. People are so scared to lose that they don't even try. Like, one thing people can't say is that I'm not trying, and I'm not trying my hardest, and I'm not trying to do the best way I know how.",
+    question: "Who is this for?",
+    answer:
+      "Course creators, coaches, and membership site owners in high-value niches like finance, trading, real estate, and personal development. If you're doing $10K+/month and spending too much time on repetitive tasks, we can help.",
   },
   {
-    title: "4. Will there be on-site registration available?",
-    desc: "I always felt like I could do anything. That's the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can't do anything, you won't do anything. I was taught I could do everything. If everything I did failed - which it doesn't, it actually succeeds - just the fact that I'm willing to fail is an inspiration. People are so scared to lose that they don't even try. Like, one thing people can't say is that I'm not trying, and I'm not trying my hardest, and I'm not trying to do the best way I know how.",
-  },
-  {
-    title: "5. What is the dress code for the conference?",
-    desc: "There's nothing I really wanted to do in life that I wasn't able to get good at. That's my skill. I'm not really specifically talented at anything except for the ability to learn. That's what I do. That's what I'm here for. Don't be afraid to be wrong because you can't learn anything from a compliment. I always felt like I could do anything. That's the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can't do anything, you won't do anything. I was taught I could do everything.",
+    question: "What makes you different?",
+    answer:
+      "We only work with online education businesses. We're not generalists. We understand student lifecycles, course delivery, and high-ticket sales because that's all we focus on.",
   },
 ];
 
@@ -31,38 +36,34 @@ export function Faq() {
   const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
 
   return (
-    <section className="py-8 px-8 lg:py-20">
+    <section className="bg-white py-20 px-8">
       <div className="container mx-auto">
-        <div className="text-center">
-          <Typography variant="h1" color="blue-gray" className="mb-4">
-            Frequently asked questions
-          </Typography>
+        <div className="text-center mb-16">
           <Typography
-            variant="lead"
-            className="mx-auto mb-24 lg:w-3/5 !text-gray-500"
+            variant="h2"
+            className="text-[#1A1A1A] text-3xl md:text-4xl font-bold mb-4"
           >
-            Welcome to the AI Conference 2023 FAQ section. We&apos;re here to
-            address your most common queries and provide you with the
-            information you need to make the most of your conference experience.
+            FAQs
+          </Typography>
+          <Typography className="text-gray-500 max-w-xl mx-auto">
+            Answers to questions you might have about Scale Vault AI
           </Typography>
         </div>
 
-        <div className="mx-auto lg:max-w-screen-lg lg:px-20">
-          {FAQS.map(({ title, desc }, key) => (
+        <div className="mx-auto max-w-2xl">
+          {FAQS.map(({ question, answer }, key) => (
             <Accordion
               key={key}
               open={open === key + 1}
               onClick={() => handleOpen(key + 1)}
+              className="border-b border-gray-200"
             >
-              <AccordionHeader className="text-left text-gray-900">
-                {title}
+              <AccordionHeader className="text-left text-[#1A1A1A] text-base font-medium border-0 py-5">
+                {question}
               </AccordionHeader>
-              <AccordionBody>
-                <Typography
-                  color="blue-gray"
-                  className="font-normal text-gray-500"
-                >
-                  {desc}
+              <AccordionBody className="pb-5">
+                <Typography className="font-normal text-gray-500">
+                  {answer}
                 </Typography>
               </AccordionBody>
             </Accordion>
@@ -72,6 +73,5 @@ export function Faq() {
     </section>
   );
 }
-
 
 export default Faq;

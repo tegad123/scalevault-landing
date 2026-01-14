@@ -1,39 +1,33 @@
 "use client";
 
-import { IconButton, Button, Typography } from "@material-tailwind/react";
-import { PlayIcon } from "@heroicons/react/24/solid";
+import { Button, Typography } from "@material-tailwind/react";
 
 function Hero() {
   return (
-    <div className="relative min-h-screen w-full bg-[url('/image/event.jpeg')] bg-cover bg-no-repeat">
-    <div className="absolute inset-0 h-full w-full bg-gray-900/60" />
-    <div className="grid min-h-screen px-8">
-      <div className="container relative z-10 my-auto mx-auto grid place-items-center text-center">
-        <Typography variant="h3" color="white" className="mb-2">
-          29-31 August @ New York
-        </Typography>
-        <Typography variant="h1" color="white" className="lg:max-w-3xl">
-          AI Conference 2023: Unlocking the Future
-        </Typography>
-        <Typography
-          variant="lead"
-          color="white"
-          className="mt-1 mb-12 w-full md:max-w-full lg:max-w-2xl"
-        >
-          Join us for the most anticipated event of the year - the AI
-          Conference 2023!
-        </Typography>
-        <div className="flex items-center gap-4">
-          <Button variant="gradient" color="white">
-            Get started
-          </Button>
-          <IconButton className="rounded-full bg-white p-6">
-            <PlayIcon className="h-4 w-4 text-gray-900" />
-          </IconButton>
+    <div className="bg-white min-h-[70vh] flex items-center">
+      <div className="container mx-auto px-8 py-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <Typography
+            variant="h1"
+            className="text-[#1A1A1A] text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+          >
+            Scale Your Online Course to 10x More Students with AI Automation
+          </Typography>
+          <Typography className="text-gray-500 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+            Scale Vault AI helps course creators automate student support, personalize learning, and boost enrollments WITHOUT hiring extra staff
+          </Typography>
+          <a
+            href="https://go.scalevault.ai/apply"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="bg-[#F5A623] text-white rounded-full px-10 py-4 text-base hover:bg-[#E09000] shadow-none">
+              Get started
+            </Button>
+          </a>
         </div>
       </div>
     </div>
-  </div>
   );
 }
 

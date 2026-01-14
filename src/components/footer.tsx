@@ -1,85 +1,96 @@
-import { Typography, Button, IconButton } from "@material-tailwind/react";
+"use client";
 
-const CURRENT_YEAR = new Date().getFullYear();
-const LINKS = ["Company", "About Us", "Team", "Products", "Blog"];
+import { Typography } from "@material-tailwind/react";
+
+const PAGES_LINKS = [
+  { name: "Home", href: "/" },
+  { name: "Sign Up", href: "/login" },
+  { name: "Terms of Service", href: "#" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
+];
+
+const COMPANY_LINKS = [{ name: "Contact", href: "/contact" }];
+
+const SOCIAL_LINKS = [
+  { name: "YouTube", href: "#" },
+  { name: "Instagram", href: "#" },
+  { name: "LinkedIn", href: "#" },
+];
 
 export function Footer() {
   return (
-    <footer className="pb-5 p-10 md:pt-10">
-      <div className="container flex flex-col mx-auto">
-        <div className="flex !w-full py-10 mb-5 md:mb-20 flex-col justify-center !items-center bg-gray-900 max-w-6xl mx-auto rounded-2xl p-5 ">
-          <Typography
-            className="text-2xl md:text-3xl text-center font-bold "
-            color="white"
-          >
-            Join now and get 30% OFF!
-          </Typography>
-          <Typography
-            color="white"
-            className=" md:w-7/12 text-center my-3 !text-base"
-          >
-            Don&apos;t miss out on this exclusive offer that will end soon.
-          </Typography>
-          <div className="flex w-full md:w-fit gap-3 mt-2 flex-col md:flex-row">
-            <Button color="white" size="md">
-              buy ticket
-            </Button>
+    <footer id="contact" className="bg-[#FAFAFA] py-16 px-8">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl mx-auto mb-12">
+          {/* Pages Column */}
+          <div>
+            <Typography className="text-[#1A1A1A] font-semibold mb-4">
+              Pages
+            </Typography>
+            <ul className="space-y-2">
+              {PAGES_LINKS.map((link) => (
+                <li key={link.name}>
+                  <Typography
+                    as="a"
+                    href={link.href}
+                    target={link.href.startsWith("http") ? "_blank" : "_self"}
+                    rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="text-gray-500 hover:text-gray-700 transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Typography>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company Column */}
+          <div>
+            <Typography className="text-[#1A1A1A] font-semibold mb-4">
+              Company
+            </Typography>
+            <ul className="space-y-2">
+              {COMPANY_LINKS.map((link) => (
+                <li key={link.name}>
+                  <Typography
+                    as="a"
+                    href={link.href}
+                    className="text-gray-500 hover:text-gray-700 transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Typography>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Social Column */}
+          <div>
+            <Typography className="text-[#1A1A1A] font-semibold mb-4">
+              Social
+            </Typography>
+            <ul className="space-y-2">
+              {SOCIAL_LINKS.map((link) => (
+                <li key={link.name}>
+                  <Typography
+                    as="a"
+                    href={link.href}
+                    className="text-gray-500 hover:text-gray-700 transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Typography>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row items-center !justify-between">
-          <Typography
-            as="a"
-            href="https://www.material-tailwind.com"
-            target="_blank"
-            variant="h6"
-            className="text-gray-900"
-          >
-            Material Tailwind
+
+        {/* Copyright */}
+        <div className="text-center border-t border-gray-200 pt-8">
+          <Typography className="text-gray-400 text-sm">
+            &copy; Scale Vault AI 2025
           </Typography>
-          <ul className="flex justify-center my-4 md:my-0 w-max mx-auto items-center gap-4">
-            {LINKS.map((link, index) => (
-              <li key={index}>
-                <Typography
-                  as="a"
-                  href="#"
-                  variant="small"
-                  color="white"
-                  className="font-normal !text-gray-700 hover:!text-gray-900 transition-colors"
-                >
-                  {link}
-                </Typography>
-              </li>
-            ))}
-          </ul>
-          <div className="flex w-fit justify-center gap-2">
-            <IconButton size="sm" color="gray" variant="text">
-              <i className="fa-brands fa-twitter text-lg" />
-            </IconButton>
-            <IconButton size="sm" color="gray" variant="text">
-              <i className="fa-brands fa-youtube text-lg" />
-            </IconButton>
-            <IconButton size="sm" color="gray" variant="text">
-              <i className="fa-brands fa-instagram text-lg" />
-            </IconButton>
-            <IconButton size="sm" color="gray" variant="text">
-              <i className="fa-brands fa-github text-lg" />
-            </IconButton>
-          </div>
         </div>
-        <Typography
-          color="blue-gray"
-          className="text-center mt-12 font-normal !text-gray-700"
-        >
-          &copy; {CURRENT_YEAR} Made with{" "}
-          <a href="https://www.material-tailwind.com" target="_blank">
-            Material Tailwind
-          </a>{" "}
-          by{" "}
-          <a href="https://www.creative-tim.com" target="_blank">
-            Creative Tim
-          </a>
-          .
-        </Typography>
       </div>
     </footer>
   );
