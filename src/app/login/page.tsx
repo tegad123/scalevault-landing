@@ -92,7 +92,7 @@ function LoginContent() {
     } else {
       // Survey complete - redirect to booking page
       console.log("Survey Data:", surveyData);
-      window.location.href = "https://go.scalevault.ai/book-a-call";
+      window.location.href = "/book-call";
     }
   };
 
