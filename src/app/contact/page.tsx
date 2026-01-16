@@ -23,30 +23,30 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       {/* Header */}
-      <header className="py-4 px-8 border-b border-gray-100">
+      <header className="py-4 px-8 border-b border-white/10">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
             <Link href="/">
-              <span className="text-[#1A1A1A] text-lg font-bold">
+              <span className="text-white text-lg font-bold">
                 Scale Vault AI
               </span>
             </Link>
             <Link href="/contact">
-              <button className="bg-gray-100 text-[#1A1A1A] rounded-full px-6 py-2 text-sm hover:bg-gray-200">
+              <button className="bg-white/10 text-white rounded-full px-6 py-2 text-sm hover:bg-white/20 transition-colors">
                 Contact
               </button>
             </Link>
           </div>
           <div className="flex items-center gap-4">
-            <Link href="/login">
-              <button className="bg-gray-100 text-[#1A1A1A] rounded-full px-6 py-2 hover:bg-gray-200">
+            <Link href="/login?tab=login">
+              <button className="bg-white/10 text-white rounded-full px-6 py-2 hover:bg-white/20 transition-colors">
                 Log In
               </button>
             </Link>
             <Link href="/login">
-              <button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-6 py-2 hover:bg-[#E09000]">
+              <button className="bg-[#F59E0B] text-black rounded-full px-6 py-2 hover:bg-[#D97706] transition-colors font-semibold">
                 Get started
               </button>
             </Link>
@@ -59,18 +59,18 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left Side - Text */}
           <div className="pt-8">
-            <h1 className="text-[#1A1A1A] text-5xl md:text-6xl font-bold leading-tight mb-8">
+            <h1 className="text-white text-5xl md:text-6xl font-bold leading-tight mb-8">
               Get in touch with the Scale Vault{" "}
-              <span className="text-[#F5A623]">AI</span>
+              <span className="text-[#F59E0B]">AI</span>
               <br />
-              <span className="text-[#F5A623]">team</span>
+              <span className="text-[#F59E0B]">team</span>
             </h1>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-400 text-lg">
               Have questions or need support? Send us a message here or you can
               email us on{" "}
               <a
                 href="mailto:info@scalevault.ai"
-                className="text-[#1A1A1A] font-semibold hover:text-[#F5A623] transition-colors"
+                className="text-white font-semibold hover:text-[#F59E0B] transition-colors"
               >
                 info@scalevault.ai
               </a>
@@ -87,7 +87,7 @@ export default function ContactPage() {
                   placeholder="Name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-gray-100 text-[#1A1A1A] placeholder-gray-400 rounded-lg px-6 py-4 border-0 focus:outline-none focus:ring-2 focus:ring-[#F5A623]"
+                  className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent"
                   required
                 />
               </div>
@@ -98,7 +98,7 @@ export default function ContactPage() {
                   placeholder="Email address"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-gray-100 text-[#1A1A1A] placeholder-gray-400 rounded-lg px-6 py-4 border-0 focus:outline-none focus:ring-2 focus:ring-[#F5A623]"
+                  className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent"
                   required
                 />
               </div>
@@ -109,13 +109,13 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={6}
-                  className="w-full bg-gray-100 text-[#1A1A1A] placeholder-gray-400 rounded-lg px-6 py-4 border-0 focus:outline-none focus:ring-2 focus:ring-[#F5A623] resize-none"
+                  className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent resize-none"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#F5A623] text-[#1A1A1A] rounded-lg py-4 text-base font-semibold hover:bg-[#E09000]"
+                className="w-full bg-[#F59E0B] text-black rounded-lg py-4 text-base font-semibold hover:bg-[#D97706] transition-colors"
               >
                 Send message
               </button>
@@ -125,17 +125,17 @@ export default function ContactPage() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-auto py-12 px-8 bg-gray-50 border-t border-gray-100">
+      <footer className="mt-auto py-12 px-8 bg-black border-t border-white/10">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl">
             {/* Pages Column */}
             <div>
-              <h4 className="text-[#1A1A1A] font-semibold mb-4">Pages</h4>
+              <h4 className="text-white font-semibold mb-4">Pages</h4>
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="/"
-                    className="text-gray-500 hover:text-[#1A1A1A] transition-colors text-sm"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     Home
                   </Link>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                 <li>
                   <Link
                     href="/login"
-                    className="text-gray-500 hover:text-[#1A1A1A] transition-colors text-sm"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     Sign Up
                   </Link>
@@ -151,7 +151,7 @@ export default function ContactPage() {
                 <li>
                   <Link
                     href="#"
-                    className="text-gray-500 hover:text-[#1A1A1A] transition-colors text-sm"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     Terms of Service
                   </Link>
@@ -159,7 +159,7 @@ export default function ContactPage() {
                 <li>
                   <Link
                     href="/privacy-policy"
-                    className="text-gray-500 hover:text-[#1A1A1A] transition-colors text-sm"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     Privacy Policy
                   </Link>
@@ -169,12 +169,12 @@ export default function ContactPage() {
 
             {/* Company Column */}
             <div>
-              <h4 className="text-[#1A1A1A] font-semibold mb-4">Company</h4>
+              <h4 className="text-white font-semibold mb-4">Company</h4>
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="/contact"
-                    className="text-gray-500 hover:text-[#1A1A1A] transition-colors text-sm"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     Contact
                   </Link>
@@ -184,12 +184,12 @@ export default function ContactPage() {
 
             {/* Social Column */}
             <div>
-              <h4 className="text-[#1A1A1A] font-semibold mb-4">Social</h4>
+              <h4 className="text-white font-semibold mb-4">Social</h4>
               <ul className="space-y-2">
                 <li>
                   <a
                     href="#"
-                    className="text-gray-500 hover:text-[#1A1A1A] transition-colors text-sm"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     YouTube
                   </a>
@@ -197,7 +197,7 @@ export default function ContactPage() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-500 hover:text-[#1A1A1A] transition-colors text-sm"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     Instagram
                   </a>
@@ -205,7 +205,7 @@ export default function ContactPage() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-500 hover:text-[#1A1A1A] transition-colors text-sm"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     LinkedIn
                   </a>

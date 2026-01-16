@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
+import { X, Menu } from "lucide-react";
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
@@ -17,63 +17,74 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="text-lg font-bold text-[#1A1A1A]">
-          Scale Vault AI
-        </Link>
-        <div className="hidden items-center gap-6 lg:flex">
-          <Link
-            href="/contact"
-            className="font-medium text-[#1A1A1A] hover:text-gray-600 transition-colors"
-          >
-            Contact
+    <nav className="sticky top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 transition-all duration-300 shadow-lg shadow-black/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="text-white font-bold text-xl tracking-tight">
+            Scale Vault AI
           </Link>
-          <Link
-            href="/login?tab=login"
-            className="font-medium text-[#1A1A1A] hover:text-gray-600 transition-colors"
-          >
-            Log in
-          </Link>
-          <Link href="/login">
-            <button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-6 py-2 hover:bg-[#E09000]">
-              Get started
-            </button>
-          </Link>
-        </div>
-        <button
-          onClick={handleOpen}
-          className="ml-auto inline-block lg:hidden p-2 text-gray-700"
-        >
-          {open ? (
-            <XMarkIcon className="h-6 w-6" />
-          ) : (
-            <Bars3Icon className="h-6 w-6" />
-          )}
-        </button>
-      </div>
-      {/* Mobile Menu */}
-      {open && (
-        <div className="container mx-auto mt-2 rounded-lg bg-white px-6 py-5 lg:hidden">
-          <div className="flex flex-col gap-4">
+
+          {/* Desktop Nav Links */}
+          <div className="hidden items-center gap-8 lg:flex">
             <Link
               href="/contact"
-              className="font-medium text-[#1A1A1A]"
+              className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
+            >
+              Contact
+            </Link>
+            <Link
+              href="/login?tab=login"
+              className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
+            >
+              Log in
+            </Link>
+            <Link
+              href="/login"
+              className="bg-[#F59E0B] hover:bg-[#D97706] text-black px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-[#F59E0B]/20"
+            >
+              Get started
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={handleOpen}
+            className="ml-auto inline-block lg:hidden p-2 text-gray-300 hover:text-white transition-colors"
+          >
+            {open ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="lg:hidden bg-black/90 backdrop-blur-lg border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-4">
+            <Link
+              href="/contact"
+              className="text-gray-300 hover:text-white font-medium py-2 transition-colors"
               onClick={() => setOpen(false)}
             >
               Contact
             </Link>
             <Link
               href="/login?tab=login"
-              className="font-medium text-[#1A1A1A]"
+              className="text-gray-300 hover:text-white font-medium py-2 transition-colors"
               onClick={() => setOpen(false)}
             >
               Log in
             </Link>
-            <Link href="/login" onClick={() => setOpen(false)}>
-              <button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-6 py-2 hover:bg-[#E09000]">
-                Get started
-              </button>
+            <Link
+              href="/login"
+              className="bg-[#F59E0B] hover:bg-[#D97706] text-black px-6 py-3 rounded-lg font-semibold text-center transition-all duration-200 shadow-lg shadow-[#F59E0B]/20"
+              onClick={() => setOpen(false)}
+            >
+              Get started
             </Link>
           </div>
         </div>

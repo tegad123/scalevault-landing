@@ -125,7 +125,7 @@ function LoginContent() {
           placeholder="Email address"
           value={loginData.email}
           onChange={handleLoginChange}
-          className="w-full bg-gray-100 text-[#1A1A1A] placeholder-gray-400 rounded-lg px-6 py-4 border-0 focus:outline-none focus:ring-2 focus:ring-[#F5A623]"
+          className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent"
           required
         />
       </div>
@@ -136,18 +136,18 @@ function LoginContent() {
           placeholder="Password"
           value={loginData.password}
           onChange={handleLoginChange}
-          className="w-full bg-gray-100 text-[#1A1A1A] placeholder-gray-400 rounded-lg px-6 py-4 border-0 focus:outline-none focus:ring-2 focus:ring-[#F5A623]"
+          className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent"
           required
         />
       </div>
       <div className="text-right">
-        <a href="#" className="text-sm text-gray-500 hover:text-[#F5A623] transition-colors">
+        <a href="#" className="text-sm text-gray-400 hover:text-[#F59E0B] transition-colors">
           Forgot password?
         </a>
       </div>
       <button
         type="submit"
-        className="w-full bg-[#F5A623] text-[#1A1A1A] rounded-lg py-4 text-base font-semibold hover:bg-[#E09000] mt-6"
+        className="w-full bg-[#F59E0B] text-black rounded-lg py-4 text-base font-semibold hover:bg-[#D97706] transition-colors mt-6"
       >
         Log In
       </button>
@@ -164,7 +164,7 @@ function LoginContent() {
           placeholder="Full name"
           value={signupData.name}
           onChange={handleSignupChange}
-          className="w-full bg-gray-100 text-[#1A1A1A] placeholder-gray-400 rounded-lg px-6 py-4 border-0 focus:outline-none focus:ring-2 focus:ring-[#F5A623]"
+          className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent"
           required
         />
       </div>
@@ -175,7 +175,7 @@ function LoginContent() {
           placeholder="Email address"
           value={signupData.email}
           onChange={handleSignupChange}
-          className="w-full bg-gray-100 text-[#1A1A1A] placeholder-gray-400 rounded-lg px-6 py-4 border-0 focus:outline-none focus:ring-2 focus:ring-[#F5A623]"
+          className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent"
           required
         />
       </div>
@@ -186,13 +186,13 @@ function LoginContent() {
           placeholder="Password"
           value={signupData.password}
           onChange={handleSignupChange}
-          className="w-full bg-gray-100 text-[#1A1A1A] placeholder-gray-400 rounded-lg px-6 py-4 border-0 focus:outline-none focus:ring-2 focus:ring-[#F5A623]"
+          className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent"
           required
         />
       </div>
       <button
         type="submit"
-        className="w-full bg-[#F5A623] text-[#1A1A1A] rounded-lg py-4 text-base font-semibold hover:bg-[#E09000] mt-6"
+        className="w-full bg-[#F59E0B] text-black rounded-lg py-4 text-base font-semibold hover:bg-[#D97706] transition-colors mt-6"
       >
         Continue
       </button>
@@ -228,13 +228,13 @@ function LoginContent() {
       <div className="space-y-6">
         {/* Progress Bar */}
         <div className="mb-8">
-          <div className="flex justify-between text-sm text-gray-500 mb-2">
+          <div className="flex justify-between text-sm text-gray-400 mb-2">
             <span>Question {currentQuestion} of 3</span>
             <span>{Math.round((currentQuestion / 3) * 100)}%</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-white/10 rounded-full h-2">
             <div
-              className="bg-[#F5A623] h-2 rounded-full transition-all duration-300"
+              className="bg-[#F59E0B] h-2 rounded-full transition-all duration-300"
               style={{ width: `${(currentQuestion / 3) * 100}%` }}
             />
           </div>
@@ -243,7 +243,7 @@ function LoginContent() {
         {/* Question 1: Business Type */}
         {currentQuestion === 1 && (
           <div className="space-y-4">
-            <h3 className="text-[#1A1A1A] text-xl font-semibold mb-4">
+            <h3 className="text-white text-xl font-semibold mb-4">
               What type of education business do you run?
             </h3>
             <div className="space-y-3">
@@ -252,8 +252,8 @@ function LoginContent() {
                   key={type}
                   className={`flex items-center p-4 rounded-lg cursor-pointer transition-all ${
                     surveyData.businessType === type
-                      ? "bg-[#F5A623] bg-opacity-10 border-2 border-[#F5A623]"
-                      : "bg-gray-100 border-2 border-transparent hover:bg-gray-200"
+                      ? "bg-[#F59E0B]/20 border-2 border-[#F59E0B]"
+                      : "bg-white/5 border-2 border-white/10 hover:bg-white/10"
                   }`}
                 >
                   <input
@@ -262,9 +262,9 @@ function LoginContent() {
                     value={type}
                     checked={surveyData.businessType === type}
                     onChange={(e) => handleSurveyChange("businessType", e.target.value)}
-                    className="w-5 h-5 text-[#F5A623] accent-[#F5A623]"
+                    className="w-5 h-5 text-[#F59E0B] accent-[#F59E0B]"
                   />
-                  <span className="ml-3 text-[#1A1A1A]">{type}</span>
+                  <span className="ml-3 text-white">{type}</span>
                 </label>
               ))}
             </div>
@@ -274,7 +274,7 @@ function LoginContent() {
         {/* Question 2: Team Size */}
         {currentQuestion === 2 && (
           <div className="space-y-4">
-            <h3 className="text-[#1A1A1A] text-xl font-semibold mb-4">
+            <h3 className="text-white text-xl font-semibold mb-4">
               What&apos;s your team size?
             </h3>
             <div className="space-y-3">
@@ -283,8 +283,8 @@ function LoginContent() {
                   key={size}
                   className={`flex items-center p-4 rounded-lg cursor-pointer transition-all ${
                     surveyData.teamSize === size
-                      ? "bg-[#F5A623] bg-opacity-10 border-2 border-[#F5A623]"
-                      : "bg-gray-100 border-2 border-transparent hover:bg-gray-200"
+                      ? "bg-[#F59E0B]/20 border-2 border-[#F59E0B]"
+                      : "bg-white/5 border-2 border-white/10 hover:bg-white/10"
                   }`}
                 >
                   <input
@@ -293,9 +293,9 @@ function LoginContent() {
                     value={size}
                     checked={surveyData.teamSize === size}
                     onChange={(e) => handleSurveyChange("teamSize", e.target.value)}
-                    className="w-5 h-5 text-[#F5A623] accent-[#F5A623]"
+                    className="w-5 h-5 text-[#F59E0B] accent-[#F59E0B]"
                   />
-                  <span className="ml-3 text-[#1A1A1A]">{size}</span>
+                  <span className="ml-3 text-white">{size}</span>
                 </label>
               ))}
             </div>
@@ -305,7 +305,7 @@ function LoginContent() {
         {/* Question 3: Challenge */}
         {currentQuestion === 3 && (
           <div className="space-y-4">
-            <h3 className="text-[#1A1A1A] text-xl font-semibold mb-4">
+            <h3 className="text-white text-xl font-semibold mb-4">
               What&apos;s your #1 challenge?
             </h3>
             <div className="space-y-3">
@@ -314,8 +314,8 @@ function LoginContent() {
                   key={challenge}
                   className={`flex items-center p-4 rounded-lg cursor-pointer transition-all ${
                     surveyData.challenge === challenge
-                      ? "bg-[#F5A623] bg-opacity-10 border-2 border-[#F5A623]"
-                      : "bg-gray-100 border-2 border-transparent hover:bg-gray-200"
+                      ? "bg-[#F59E0B]/20 border-2 border-[#F59E0B]"
+                      : "bg-white/5 border-2 border-white/10 hover:bg-white/10"
                   }`}
                 >
                   <input
@@ -324,9 +324,9 @@ function LoginContent() {
                     value={challenge}
                     checked={surveyData.challenge === challenge}
                     onChange={(e) => handleSurveyChange("challenge", e.target.value)}
-                    className="w-5 h-5 text-[#F5A623] accent-[#F5A623]"
+                    className="w-5 h-5 text-[#F59E0B] accent-[#F59E0B]"
                   />
-                  <span className="ml-3 text-[#1A1A1A]">{challenge}</span>
+                  <span className="ml-3 text-white">{challenge}</span>
                 </label>
               ))}
             </div>
@@ -338,7 +338,7 @@ function LoginContent() {
           {currentQuestion > 1 && (
             <button
               onClick={handleSurveyBack}
-              className="flex-1 border border-gray-300 text-[#1A1A1A] rounded-lg py-4 text-base font-semibold hover:bg-gray-50"
+              className="flex-1 border border-white/20 text-white rounded-lg py-4 text-base font-semibold hover:bg-white/10 transition-colors"
             >
               Back
             </button>
@@ -346,10 +346,10 @@ function LoginContent() {
           <button
             onClick={handleSurveyNext}
             disabled={!isCurrentQuestionValid()}
-            className={`flex-1 rounded-lg py-4 text-base font-semibold ${
+            className={`flex-1 rounded-lg py-4 text-base font-semibold transition-colors ${
               isCurrentQuestionValid()
-                ? "bg-[#F5A623] text-[#1A1A1A] hover:bg-[#E09000]"
-                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                ? "bg-[#F59E0B] text-black hover:bg-[#D97706]"
+                : "bg-white/10 text-gray-500 cursor-not-allowed"
             }`}
           >
             {currentQuestion === 3 ? "Book Your Call" : "Next"}
@@ -360,17 +360,17 @@ function LoginContent() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-black flex flex-col">
       {/* Header */}
-      <header className="py-4 px-8 border-b border-gray-100">
+      <header className="py-4 px-8 border-b border-white/10">
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/">
-            <span className="text-[#1A1A1A] text-lg font-bold">
+            <span className="text-white text-lg font-bold">
               Scale Vault AI
             </span>
           </Link>
           <Link href="/contact">
-            <button className="bg-gray-100 text-[#1A1A1A] rounded-full px-6 py-2 text-sm hover:bg-gray-200">
+            <button className="bg-white/10 text-white rounded-full px-6 py-2 text-sm hover:bg-white/20 transition-colors">
               Contact
             </button>
           </Link>
@@ -384,13 +384,13 @@ function LoginContent() {
             <>
               {/* Toggle */}
               <div className="flex justify-center mb-8">
-                <div className="bg-gray-100 rounded-full p-1 inline-flex">
+                <div className="bg-white/10 rounded-full p-1 inline-flex">
                   <button
                     onClick={() => setMode("login")}
                     className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
                       mode === "login"
-                        ? "bg-[#F5A623] text-[#1A1A1A]"
-                        : "text-gray-500 hover:text-[#1A1A1A]"
+                        ? "bg-[#F59E0B] text-black"
+                        : "text-gray-400 hover:text-white"
                     }`}
                   >
                     Log In
@@ -399,8 +399,8 @@ function LoginContent() {
                     onClick={() => setMode("signup")}
                     className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
                       mode === "signup"
-                        ? "bg-[#F5A623] text-[#1A1A1A]"
-                        : "text-gray-500 hover:text-[#1A1A1A]"
+                        ? "bg-[#F59E0B] text-black"
+                        : "text-gray-400 hover:text-white"
                     }`}
                   >
                     Sign Up
@@ -409,10 +409,10 @@ function LoginContent() {
               </div>
 
               {/* Title */}
-              <h1 className="text-[#1A1A1A] text-3xl font-bold text-center mb-2">
+              <h1 className="text-white text-3xl font-bold text-center mb-2">
                 {mode === "login" ? "Welcome back" : "Create your account"}
               </h1>
-              <p className="text-gray-500 text-center mb-8">
+              <p className="text-gray-400 text-center mb-8">
                 {mode === "login"
                   ? "Enter your credentials to access your account"
                   : "Get started with Scale Vault AI today"}
@@ -423,16 +423,16 @@ function LoginContent() {
 
               {/* Divider */}
               <div className="flex items-center my-8">
-                <div className="flex-1 border-t border-gray-200"></div>
-                <span className="px-4 text-gray-400 text-sm">or</span>
-                <div className="flex-1 border-t border-gray-200"></div>
+                <div className="flex-1 border-t border-white/10"></div>
+                <span className="px-4 text-gray-500 text-sm">or</span>
+                <div className="flex-1 border-t border-white/10"></div>
               </div>
 
               {/* Google Sign In */}
               <button
                 onClick={handleGoogleSignIn}
                 disabled={isLoading}
-                className="w-full border border-gray-200 text-[#1A1A1A] rounded-lg py-4 text-base font-medium hover:bg-gray-50 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full border border-white/20 text-white rounded-lg py-4 text-base font-medium hover:bg-white/10 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isLoading ? (
                   <span>Connecting...</span>
@@ -462,13 +462,13 @@ function LoginContent() {
               </button>
 
               {/* Footer text */}
-              <p className="text-center text-gray-500 text-sm mt-8">
+              <p className="text-center text-gray-400 text-sm mt-8">
                 {mode === "login" ? (
                   <>
                     Don&apos;t have an account?{" "}
                     <button
                       onClick={() => setMode("signup")}
-                      className="text-[#F5A623] font-medium hover:underline"
+                      className="text-[#F59E0B] font-medium hover:underline"
                     >
                       Sign up
                     </button>
@@ -478,7 +478,7 @@ function LoginContent() {
                     Already have an account?{" "}
                     <button
                       onClick={() => setMode("login")}
-                      className="text-[#F5A623] font-medium hover:underline"
+                      className="text-[#F59E0B] font-medium hover:underline"
                     >
                       Log in
                     </button>
@@ -490,10 +490,10 @@ function LoginContent() {
 
           {mode === "survey" && (
             <>
-              <h1 className="text-[#1A1A1A] text-3xl font-bold text-center mb-2">
+              <h1 className="text-white text-3xl font-bold text-center mb-2">
                 Short Application
               </h1>
-              <p className="text-gray-500 text-center mb-8">
+              <p className="text-gray-400 text-center mb-8">
                 Help us understand your business so we can serve you better
               </p>
               {renderSurvey()}
@@ -508,8 +508,8 @@ function LoginContent() {
 export default function LoginPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-[#1A1A1A]">Loading...</div>
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-white">Loading...</div>
       </div>
     }>
       <LoginContent />
