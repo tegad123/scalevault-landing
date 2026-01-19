@@ -31,7 +31,7 @@ export function Footer() {
                   <Link
                     href={link.href}
                     className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
+          >
                     {link.name}
                   </Link>
                 </li>
@@ -65,12 +65,12 @@ export function Footer() {
                   <a
                     href={link.href}
                     className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
+                >
                     {link.name}
                   </a>
-                </li>
-              ))}
-            </ul>
+              </li>
+            ))}
+          </ul>
           </div>
         </div>
 

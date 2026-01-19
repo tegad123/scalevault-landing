@@ -15,12 +15,12 @@ function Hero() {
           </p>
           <Link href="/login?tab=signup">
             <button className="bg-[#F5A623] text-[#1A1A1A] rounded-full px-10 py-4 text-base font-semibold hover:bg-[#E09000]">
-              Get started
+            Get started
             </button>
           </Link>
-        </div>
       </div>
     </div>
+  </div>
   );
 }
 

@@ -37,7 +37,7 @@ export function Navbar() {
               href="/login?tab=login"
               className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
             >
-              Log in
+            Log in
             </Link>
             <Link
               href="/login"
@@ -45,18 +45,18 @@ export function Navbar() {
             >
               Get started
             </Link>
-          </div>
+        </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={handleOpen}
+          onClick={handleOpen}
             className="ml-auto inline-block lg:hidden p-2 text-gray-300 hover:text-white transition-colors"
-          >
-            {open ? (
+        >
+          {open ? (
               <X className="h-6 w-6" />
-            ) : (
+          ) : (
               <Menu className="h-6 w-6" />
-            )}
+          )}
           </button>
         </div>
       </div>
