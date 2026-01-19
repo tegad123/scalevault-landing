@@ -134,15 +134,22 @@ function LoginContent() {
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
     setError(null);
+    // #region agent log
+    const redirectUrl = `${window.location.origin}/auth/callback`;
+    fetch('http://127.0.0.1:7245/ingest/526a9400-4c7f-4591-8fa9-a20530c8cedc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:handleGoogleSignIn',message:'Google sign-in initiated',data:{windowOrigin:window.location.origin,redirectUrl:redirectUrl,fullHref:window.location.href},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A'})}).catch(()=>{});
+    // #endregion
     try {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: redirectUrl,
         },
       });
       
       if (error) {
+        // #region agent log
+        fetch('http://127.0.0.1:7245/ingest/526a9400-4c7f-4591-8fa9-a20530c8cedc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:handleGoogleSignIn:error',message:'Google sign-in error',data:{errorMessage:error.message},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A'})}).catch(()=>{});
+        // #endregion
         console.error("Google sign-in error:", error.message);
         setError("Failed to sign in with Google. Please try again.");
       }
