@@ -1,15 +1,13 @@
 import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
-import { headers } from 'next/headers'
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url)
   const code = requestUrl.searchParams.get('code')
   
-  // Get the correct origin - use x-forwarded-host for proxied requests (Render, Vercel, etc.)
-  const headersList = headers()
-  const forwardedHost = headersList.get('x-forwarded-host')
-  const forwardedProto = headersList.get('x-forwarded-proto') || 'https'
+  // Get the correct origin - use x-forwarded headers for proxied requests (Render, Vercel, etc.)
+  const forwardedHost = request.headers.get('x-forwarded-host')
+  const forwardedProto = request.headers.get('x-forwarded-proto') || 'https'
   
   // Use forwarded host if available (production), otherwise fall back to request origin (local dev)
   const origin = forwardedHost 
