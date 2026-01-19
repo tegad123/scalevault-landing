@@ -5,18 +5,31 @@ export async function GET(request: Request) {
   const requestUrl = new URL(request.url)
   const code = requestUrl.searchParams.get('code')
   
-  // Get the correct origin - use x-forwarded headers for proxied requests (Render, Vercel, etc.)
+  // Get headers for origin detection
   const forwardedHost = request.headers.get('x-forwarded-host')
   const forwardedProto = request.headers.get('x-forwarded-proto') || 'https'
+  const actualHost = request.headers.get('host')
   
-  // Use forwarded host if available (production), otherwise fall back to request origin (local dev)
-  const origin = forwardedHost 
-    ? `${forwardedProto}://${forwardedHost}`
-    : requestUrl.origin
+  // Determine the best origin to use:
+  // 1. If accessed via onrender.com, stay on onrender.com (useful during DNS propagation)
+  // 2. Otherwise use the forwarded host for production custom domains
+  let origin: string
+  
+  if (actualHost?.includes('onrender.com')) {
+    // User came from onrender.com, redirect back there
+    origin = `https://${actualHost}`
+  } else if (forwardedHost) {
+    // Use forwarded host for proxied requests
+    origin = `${forwardedProto}://${forwardedHost}`
+  } else {
+    // Fallback to request origin
+    origin = requestUrl.origin
+  }
 
   // #region agent log
   console.log('[AUTH_CALLBACK] Origin detection:', { 
     forwardedHost, 
+    actualHost,
     forwardedProto, 
     requestOrigin: requestUrl.origin, 
     finalOrigin: origin,
