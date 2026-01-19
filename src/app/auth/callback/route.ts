@@ -26,17 +26,6 @@ export async function GET(request: Request) {
     origin = requestUrl.origin
   }
 
-  // #region agent log
-  console.log('[AUTH_CALLBACK] Origin detection:', { 
-    forwardedHost, 
-    actualHost,
-    forwardedProto, 
-    requestOrigin: requestUrl.origin, 
-    finalOrigin: origin,
-    hasCode: !!code 
-  })
-  // #endregion
-
   if (code) {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
