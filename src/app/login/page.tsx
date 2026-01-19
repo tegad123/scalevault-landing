@@ -9,12 +9,15 @@ function LoginContent() {
   const searchParams = useSearchParams();
   const defaultTab = searchParams.get("tab") === "login" ? "login" : "signup";
   const showSurvey = searchParams.get("survey") === "true";
+  const authError = searchParams.get("error");
   
   const [mode, setMode] = useState<"login" | "signup" | "survey">(
     showSurvey ? "survey" : (defaultTab === "login" ? "login" : "signup")
   );
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(authError ? "Authentication failed. Please try again." : null);
+  const [message, setMessage] = useState<string | null>(null);
   
   const [loginData, setLoginData] = useState({
     email: "",
@@ -42,30 +45,95 @@ function LoginContent() {
 
   const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
+    setError(null);
   };
 
   const handleSignupChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSignupData({ ...signupData, [e.target.name]: e.target.value });
+    setError(null);
   };
 
   const handleSurveyChange = (field: string, value: string) => {
     setSurveyData({ ...surveyData, [field]: value });
   };
 
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login:", loginData);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: loginData.email,
+        password: loginData.password,
+      });
+
+      if (error) {
+        setError(error.message);
+        return;
+      }
+
+      if (data.user) {
+        // Successful login - redirect to survey or book-call
+        window.location.href = "/book-call";
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleSignupSubmit = (e: React.FormEvent) => {
+  const handleSignupSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // After signup, go to survey
-    setMode("survey");
-    setCurrentQuestion(1);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: signupData.email,
+        password: signupData.password,
+        options: {
+          data: {
+            full_name: signupData.name,
+          },
+        },
+      });
+
+      if (error) {
+        setError(error.message);
+        return;
+      }
+
+      if (data.user) {
+        // Check if email confirmation is required
+        if (data.user.identities && data.user.identities.length === 0) {
+          setError("This email is already registered. Please log in instead.");
+          return;
+        }
+        
+        // If email confirmation is enabled, show message
+        if (!data.session) {
+          setMessage("Check your email for a confirmation link to complete signup.");
+          return;
+        }
+
+        // If no confirmation needed, go to survey
+        setMode("survey");
+        setCurrentQuestion(1);
+      }
+    } catch (err) {
+      console.error("Signup error:", err);
+      setError("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
+    setError(null);
     try {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
@@ -76,11 +144,11 @@ function LoginContent() {
       
       if (error) {
         console.error("Google sign-in error:", error.message);
-        alert("Failed to sign in with Google. Please try again.");
+        setError("Failed to sign in with Google. Please try again.");
       }
     } catch (err) {
       console.error("Unexpected error:", err);
-      alert("An unexpected error occurred. Please try again.");
+      setError("An unexpected error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -147,9 +215,10 @@ function LoginContent() {
       </div>
       <button
         type="submit"
-        className="w-full bg-[#F59E0B] text-black rounded-lg py-4 text-base font-semibold hover:bg-[#D97706] transition-colors mt-6"
+        disabled={isLoading}
+        className="w-full bg-[#F59E0B] text-black rounded-lg py-4 text-base font-semibold hover:bg-[#D97706] transition-colors mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Log In
+        {isLoading ? "Logging in..." : "Log In"}
       </button>
     </form>
   );
@@ -188,13 +257,16 @@ function LoginContent() {
           onChange={handleSignupChange}
           className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent"
           required
+          minLength={6}
         />
       </div>
+      <p className="text-xs text-gray-500">Password must be at least 6 characters</p>
       <button
         type="submit"
-        className="w-full bg-[#F59E0B] text-black rounded-lg py-4 text-base font-semibold hover:bg-[#D97706] transition-colors mt-6"
+        disabled={isLoading}
+        className="w-full bg-[#F59E0B] text-black rounded-lg py-4 text-base font-semibold hover:bg-[#D97706] transition-colors mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Continue
+        {isLoading ? "Creating account..." : "Continue"}
       </button>
     </form>
   );
@@ -380,13 +452,27 @@ function LoginContent() {
       {/* Main Content */}
       <main className="flex-1 flex items-center justify-center px-8 py-16">
         <div className="w-full max-w-md">
+          {/* Error Message */}
+          {error && (
+            <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 rounded-lg text-red-400 text-center">
+              {error}
+            </div>
+          )}
+
+          {/* Success Message */}
+          {message && (
+            <div className="mb-6 p-4 bg-green-500/10 border border-green-500/50 rounded-lg text-green-400 text-center">
+              {message}
+            </div>
+          )}
+
           {mode !== "survey" && (
             <>
               {/* Toggle */}
               <div className="flex justify-center mb-8">
                 <div className="bg-white/10 rounded-full p-1 inline-flex">
                   <button
-                    onClick={() => setMode("login")}
+                    onClick={() => { setMode("login"); setError(null); setMessage(null); }}
                     className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
                       mode === "login"
                         ? "bg-[#F59E0B] text-black"
@@ -396,7 +482,7 @@ function LoginContent() {
                     Log In
                   </button>
                   <button
-                    onClick={() => setMode("signup")}
+                    onClick={() => { setMode("signup"); setError(null); setMessage(null); }}
                     className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
                       mode === "signup"
                         ? "bg-[#F59E0B] text-black"
@@ -467,7 +553,7 @@ function LoginContent() {
                   <>
                     Don&apos;t have an account?{" "}
                     <button
-                      onClick={() => setMode("signup")}
+                      onClick={() => { setMode("signup"); setError(null); setMessage(null); }}
                       className="text-[#F59E0B] font-medium hover:underline"
                     >
                       Sign up
@@ -477,7 +563,7 @@ function LoginContent() {
                   <>
                     Already have an account?{" "}
                     <button
-                      onClick={() => setMode("login")}
+                      onClick={() => { setMode("login"); setError(null); setMessage(null); }}
                       className="text-[#F59E0B] font-medium hover:underline"
                     >
                       Log in
