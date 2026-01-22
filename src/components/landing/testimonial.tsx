@@ -6,7 +6,7 @@ import Image from "next/image";
 const testimonials = [
   {
     quote:
-      "Scale Vault built me a custom platform I actually own. No more renting Kajabi. When a client tried to dispute after completing my entire AI strategy program, I had full proof of their engagement. Won the case in days.",
+      "ScaleVault built me a custom platform I actually own—no more being stuck on Skool's basic setup. When a client tried to dispute after completing my entire AI strategy program, I had full proof of their engagement. Won the case in days.",
     name: "Norman Wang",
     company: "CEO @ Lead Oracle",
     image: "/testimonials/norman-wang.jpg",
@@ -22,7 +22,7 @@ const testimonials = [
   },
   {
     quote:
-      "As a day trading coach, students would complete my program then dispute. Scale Vault tracks every lesson, every trade log, every login. Saved me $10K+ in chargebacks last quarter alone.",
+      "In day trading education, you get students who complete everything, profit from your strategies, then dispute. ScaleVault tracks every lesson, trade log, and login. When the inevitable chargebacks hit, I have bulletproof evidence. Saved me $10K+ last quarter alone.",
     name: "Dae .E",
     company: "@Daetradez",
     image: "/testimonials/daetradez.png",
