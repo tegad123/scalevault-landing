@@ -1,6 +1,8 @@
 export { Hero } from "./hero";
+export { TrustedBy } from "./trusted-by";
 export { ProblemCards } from "./problem-cards";
 export { SolutionCards } from "./solution-cards";
+export { Stats } from "./stats";
 export { WinRateStat } from "./win-rate-stat";
 export { Testimonial } from "./testimonial";
 export { PricingCard } from "./pricing-card";

@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { X, Menu } from "lucide-react";
 
+const BOOKING_URL = "https://go.scalevault.ai/apply-761095";
+
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
 
@@ -33,30 +35,26 @@ export function Navbar() {
             >
               Contact
             </Link>
-            <Link
-              href="/login?tab=login"
-              className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
-            >
-            Log in
-            </Link>
-            <Link
-              href="/login"
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-[#F59E0B] hover:bg-[#D97706] text-black px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-[#F59E0B]/20"
             >
-              Get started
-            </Link>
-        </div>
+              Book Free Strategy Call
+            </a>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
-          onClick={handleOpen}
+            onClick={handleOpen}
             className="ml-auto inline-block lg:hidden p-2 text-gray-300 hover:text-white transition-colors"
-        >
-          {open ? (
+          >
+            {open ? (
               <X className="h-6 w-6" />
-          ) : (
+            ) : (
               <Menu className="h-6 w-6" />
-          )}
+            )}
           </button>
         </div>
       </div>
@@ -72,20 +70,15 @@ export function Navbar() {
             >
               Contact
             </Link>
-            <Link
-              href="/login?tab=login"
-              className="text-gray-300 hover:text-white font-medium py-2 transition-colors"
-              onClick={() => setOpen(false)}
-            >
-              Log in
-            </Link>
-            <Link
-              href="/login"
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-[#F59E0B] hover:bg-[#D97706] text-black px-6 py-3 rounded-lg font-semibold text-center transition-all duration-200 shadow-lg shadow-[#F59E0B]/20"
               onClick={() => setOpen(false)}
             >
-              Get started
-            </Link>
+              Book Free Strategy Call
+            </a>
           </div>
         </div>
       )}

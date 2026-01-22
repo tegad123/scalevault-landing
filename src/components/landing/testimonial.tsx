@@ -1,25 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const testimonials = [
   {
     quote:
-      "We used to lose 8-10 chargebacks a month on our $5K course. Students would complete 70% of the content, then dispute claiming they 'never used it.' ScaleVault AI tracks everything - every login, every lesson, every quiz. Now we win 80% of our disputes. It's like having a legal team built into our platform.",
-    name: "Marcus T.",
-    company: "Online Course Creator",
+      "Scale Vault built me a custom platform I actually own. No more renting Kajabi. When a client tried to dispute after completing my entire AI strategy program, I had full proof of their engagement. Won the case in days.",
+    name: "Norman Wang",
+    company: "CEO @ Lead Oracle",
+    image: "/testimonials/norman-wang.jpg",
+    highlight: "AI Strategy Consulting",
   },
   {
     quote:
-      "Our team was spending 10+ hours a month fighting chargebacks manually - screenshotting login records, compiling evidence, writing responses. ScaleVault AI generates a complete evidence package in one click. We went from a 40% win rate to over 75%. This paid for itself in the first month.",
-    name: "Sarah K.",
-    company: "High-Ticket Coach",
+      "Running high-ticket Amazon FBA coaching, chargebacks were killing my margins. Scale Vault's platform tracks every student interaction. I've saved thousands in disputes I would have lost before.",
+    name: "Jaese",
+    company: "Founder @ Growth Acquisitions Inc",
+    image: "/testimonials/jaese.jpg",
+    highlight: "Amazon FBA Coaching",
   },
   {
     quote:
-      "I was paying Kajabi $299/month and STILL losing disputes because they don't track what banks need to see. ScaleVault gave me my own branded platform AND chargeback protection. I've saved over $20K in the last 6 months just from disputes I would have lost.",
-    name: "David R.",
-    company: "Digital Course Business",
+      "As a day trading coach, students would complete my program then dispute. Scale Vault tracks every lesson, every trade log, every login. Saved me $10K+ in chargebacks last quarter alone.",
+    name: "Dae .E",
+    company: "@Daetradez",
+    image: "/testimonials/daetradez.png",
+    highlight: "Day Trading Education",
   },
 ];
 
@@ -28,15 +35,20 @@ export function Testimonial() {
     <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-white text-center mb-12"
+          className="text-center mb-12"
         >
-          Kind Words From Customers
-        </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            What Our Clients Say
+          </h2>
+          <p className="text-gray-400 text-lg">
+            High-ticket creators protecting their revenue with Scale Vault
+          </p>
+        </motion.div>
 
         {/* Testimonial Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -50,18 +62,39 @@ export function Testimonial() {
               whileHover={{ scale: 1.02 }}
               className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 shadow-xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex flex-col"
             >
+              {/* Industry Tag */}
+              <span className="inline-block text-xs font-semibold text-[#F59E0B] bg-[#F59E0B]/10 px-3 py-1 rounded-full mb-4 w-fit">
+                {testimonial.highlight}
+              </span>
+
               {/* Quote */}
-              <blockquote className="text-gray-300 leading-relaxed flex-grow">
+              <blockquote className="text-gray-300 leading-relaxed flex-grow text-lg">
                 &ldquo;{testimonial.quote}&rdquo;
               </blockquote>
 
               {/* Divider */}
               <div className="w-full h-px bg-white/10 my-6" />
 
-              {/* Attribution */}
-              <div>
-                <p className="text-white font-bold">{testimonial.name}</p>
-                <p className="text-gray-500 text-sm">{testimonial.company}</p>
+              {/* Attribution with Profile Picture */}
+              <div className="flex items-center gap-4">
+                {/* Profile Picture */}
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#F59E0B]/30 to-[#F59E0B]/10 border border-[#F59E0B]/20 overflow-hidden flex-shrink-0">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Hide image on error, show placeholder
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                </div>
+                <div>
+                  <p className="text-white font-bold">{testimonial.name}</p>
+                  <p className="text-gray-500 text-sm">{testimonial.company}</p>
+                </div>
               </div>
             </motion.div>
           ))}
