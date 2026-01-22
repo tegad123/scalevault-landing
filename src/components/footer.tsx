@@ -4,7 +4,6 @@ import Link from "next/link";
 
 const PAGES_LINKS = [
   { name: "Home", href: "/" },
-  { name: "Sign Up", href: "/login" },
   { name: "Terms of Service", href: "#" },
   { name: "Privacy Policy", href: "/privacy-policy" },
 ];

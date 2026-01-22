@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { Footer } from "@/components/footer";
+
+const BOOKING_URL = "https://go.scalevault.ai/apply-761095";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -25,31 +28,28 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-black">
       {/* Header */}
-      <header className="py-4 px-8 border-b border-white/10">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <Link href="/">
-              <span className="text-white text-lg font-bold">
-                Scale Vault AI
-              </span>
+      <header className="sticky top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 transition-all duration-300 shadow-lg shadow-black/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="text-white font-bold text-xl tracking-tight">
+              Scale Vault AI
             </Link>
-            <Link href="/contact">
-              <button className="bg-white/10 text-white rounded-full px-6 py-2 text-sm hover:bg-white/20 transition-colors">
+            <div className="flex items-center gap-8">
+              <Link
+                href="/contact"
+                className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
+              >
                 Contact
-              </button>
-            </Link>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link href="/login?tab=login">
-              <button className="bg-white/10 text-white rounded-full px-6 py-2 hover:bg-white/20 transition-colors">
-                Log In
-              </button>
-            </Link>
-            <Link href="/login">
-              <button className="bg-[#F59E0B] text-black rounded-full px-6 py-2 hover:bg-[#D97706] transition-colors font-semibold">
-                Get started
-              </button>
-            </Link>
+              </Link>
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#F59E0B] hover:bg-[#D97706] text-black px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg shadow-[#F59E0B]/20"
+              >
+                Book Free Strategy Call
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -124,97 +124,7 @@ export default function ContactPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="mt-auto py-12 px-8 bg-black border-t border-white/10">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl">
-            {/* Pages Column */}
-            <div>
-              <h4 className="text-white font-semibold mb-4">Pages</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/"
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/login"
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    Sign Up
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/privacy-policy"
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Company Column */}
-            <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/contact"
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Social Column */}
-            <div>
-              <h4 className="text-white font-semibold mb-4">Social</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    YouTube
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    Instagram
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    LinkedIn
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
