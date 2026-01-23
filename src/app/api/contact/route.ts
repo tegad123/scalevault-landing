@@ -13,9 +13,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create transporter using Gmail
+    // Create transporter using Gmail/Google Workspace SMTP
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD,
@@ -67,8 +69,10 @@ This message was sent from the Scale Vault AI contact form.
     );
   } catch (error) {
     console.error("Error sending email:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    console.error("Error details:", errorMessage);
     return NextResponse.json(
-      { error: "Failed to send email. Please try again later." },
+      { error: "Failed to send email. Please try again later.", details: errorMessage },
       { status: 500 }
     );
   }
