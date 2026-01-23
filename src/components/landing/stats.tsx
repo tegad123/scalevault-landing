@@ -1,15 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, DollarSign, TrendingUp, Clock } from "lucide-react";
+import { DollarSign, TrendingUp, Clock } from "lucide-react";
 
 const stats = [
-  {
-    icon: Users,
-    value: "10+",
-    label: "Course Creators Protected",
-    description: "High-ticket coaches trust us",
-  },
   {
     icon: DollarSign,
     value: "$200K+",

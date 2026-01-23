@@ -44,7 +44,7 @@ export function ProblemCards() {
             Why High-Ticket Creators Are Bleeding Money
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            If you sell courses for $2,000+, you&apos;re a target for chargeback fraud
+            If you sell courses for $5,000+, you&apos;re a target for chargeback fraud
           </p>
         </motion.div>
 
