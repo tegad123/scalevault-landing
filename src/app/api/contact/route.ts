@@ -3,12 +3,19 @@ import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, phone, smsConsent } = await request.json();
 
     // Validate input
-    if (!name || !email || !message) {
+    if (!name || !email || !phone) {
       return NextResponse.json(
-        { error: "Name, email, and message are required" },
+        { error: "Name, email, and phone number are required" },
+        { status: 400 }
+      );
+    }
+
+    if (!smsConsent) {
+      return NextResponse.json(
+        { error: "SMS consent is required" },
         { status: 400 }
       );
     }
@@ -29,34 +36,31 @@ export async function POST(request: NextRequest) {
       from: process.env.GMAIL_USER,
       to: "tega@scalevault.ai",
       replyTo: email,
-      subject: `New Contact Form Submission from ${name}`,
+      subject: `New SMS Opt-in from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #F59E0B;">New Contact Form Submission</h2>
+          <h2 style="color: #F59E0B;">New SMS Opt-in Submission</h2>
           <hr style="border: 1px solid #eee;" />
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-          <p><strong>Message:</strong></p>
-          <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;">
-            ${message.replace(/\n/g, "<br>")}
-          </div>
+          <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
+          <p><strong>SMS Consent:</strong> <span style="color: #22c55e;">✓ Yes, opted in</span></p>
           <hr style="border: 1px solid #eee; margin-top: 20px;" />
           <p style="color: #666; font-size: 12px;">
-            This message was sent from the Scale Vault AI contact form.
+            This submission was sent from the Scale Vault AI contact form.
           </p>
         </div>
       `,
       text: `
-New Contact Form Submission
+New SMS Opt-in Submission
 
 Name: ${name}
 Email: ${email}
-
-Message:
-${message}
+Phone: ${phone}
+SMS Consent: Yes, opted in
 
 ---
-This message was sent from the Scale Vault AI contact form.
+This submission was sent from the Scale Vault AI contact form.
       `,
     };
 
