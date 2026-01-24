@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { MessageSquare } from "lucide-react";
 
 const BOOKING_URL = "https://go.scalevault.ai/apply-761095";
 
@@ -10,10 +11,19 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    // Load Typeform script if not already present
+    if (!document.querySelector('script[src*="embed.typeform.com"]')) {
+      const script = document.createElement("script");
+      script.src = "//embed.typeform.com/next/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -42,7 +52,7 @@ export default function ContactPage() {
       }
 
       setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "" });
     } catch (error) {
       setStatus("error");
       setErrorMessage(error instanceof Error ? error.message : "Something went wrong");
@@ -150,18 +160,6 @@ export default function ContactPage() {
                     required
                   />
                 </div>
-                <div>
-                  <textarea
-                    name="message"
-                    placeholder="Your message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    disabled={status === "loading"}
-                    rows={6}
-                    className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent resize-none disabled:opacity-50"
-                    required
-                  />
-                </div>
                 <button
                   type="submit"
                   disabled={status === "loading"}
@@ -181,6 +179,23 @@ export default function ContactPage() {
                 </button>
               </form>
             )}
+
+            {/* SMS Consent Section */}
+            <div className="mt-12 pt-8 border-t border-white/10">
+              <div className="flex items-center gap-2 mb-4">
+                <MessageSquare className="w-5 h-5 text-[#F59E0B]" />
+                <h3 className="text-white text-lg font-semibold">Get SMS Updates</h3>
+              </div>
+              <p className="text-gray-400 text-sm mb-4">
+                Sign up to receive exclusive updates and insights directly to your phone.
+              </p>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-3">
+                <div
+                  data-tf-live="01KFQ0QG5YJX6BWNK90R8K1HB0"
+                  style={{ height: "500px", width: "100%" }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </main>
