@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
+import { MessageSquare } from "lucide-react";
 
 const PAGES_LINKS = [
   { name: "Home", href: "/" },
@@ -17,9 +19,41 @@ const SOCIAL_LINKS = [
 ];
 
 export function Footer() {
+  useEffect(() => {
+    // Load Typeform script if not already present
+    if (!document.querySelector('script[src*="embed.typeform.com"]')) {
+      const script = document.createElement("script");
+      script.src = "//embed.typeform.com/next/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
   return (
     <footer id="contact" className="bg-black border-t border-white/10 py-16 px-8">
       <div className="container mx-auto">
+        {/* SMS Signup Section */}
+        <div className="max-w-2xl mx-auto mb-16">
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center gap-2 bg-[#F59E0B]/10 border border-[#F59E0B]/20 rounded-full px-4 py-2 mb-4">
+              <MessageSquare className="w-4 h-4 text-[#F59E0B]" />
+              <span className="text-sm text-[#F59E0B] font-medium">SMS Updates</span>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+              Stay Connected
+            </h3>
+            <p className="text-gray-400 text-sm">
+              Get exclusive updates and insights delivered to your phone.
+            </p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-4 shadow-lg">
+            <div
+              data-tf-live="01KFQ0QG5YJX6BWNK90R8K1HB0"
+              style={{ height: "650px", width: "100%" }}
+            />
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl mx-auto mb-12">
           {/* Pages Column */}
           <div>
