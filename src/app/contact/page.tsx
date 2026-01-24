@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
-import { MessageSquare } from "lucide-react";
+import { Phone } from "lucide-react";
 
 const BOOKING_URL = "https://go.scalevault.ai/apply-761095";
 
@@ -11,24 +11,21 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
+    smsConsent: false,
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    // Load Typeform script if not already present
-    if (!document.querySelector('script[src*="embed.typeform.com"]')) {
-      const script = document.createElement("script");
-      script.src = "//embed.typeform.com/next/embed.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, []);
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type } = e.target;
+    if (type === "checkbox") {
+      setFormData({ ...formData, [name]: (e.target as HTMLInputElement).checked });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -52,7 +49,7 @@ export default function ContactPage() {
       }
 
       setStatus("success");
-      setFormData({ name: "", email: "" });
+      setFormData({ name: "", email: "", phone: "", smsConsent: false });
     } catch (error) {
       setStatus("error");
       setErrorMessage(error instanceof Error ? error.message : "Something went wrong");
@@ -120,13 +117,13 @@ export default function ContactPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-white text-xl font-semibold mb-2">Message Sent!</h3>
+                <h3 className="text-white text-xl font-semibold mb-2">Submitted Successfully!</h3>
                 <p className="text-gray-400 mb-6">Thank you for reaching out. We&apos;ll get back to you soon.</p>
                 <button
                   onClick={() => setStatus("idle")}
                   className="text-[#F59E0B] hover:text-[#D97706] font-medium transition-colors"
                 >
-                  Send another message
+                  Submit another request
                 </button>
               </div>
             ) : (
@@ -160,6 +157,38 @@ export default function ContactPage() {
                     required
                   />
                 </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Phone className="w-4 h-4 text-[#F59E0B]" />
+                    <label className="text-white text-sm font-medium">Your mobile number</label>
+                  </div>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="(555) 123-4567"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    disabled={status === "loading"}
+                    className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent disabled:opacity-50"
+                    required
+                  />
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      name="smsConsent"
+                      checked={formData.smsConsent}
+                      onChange={handleChange}
+                      disabled={status === "loading"}
+                      className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#F59E0B] focus:ring-[#F59E0B] focus:ring-offset-0 cursor-pointer"
+                      required
+                    />
+                    <p className="text-gray-400 text-sm">
+                      By submitting this form, you agree to receive SMS notifications related to your appointments or service requests. Message and data rates may apply. Reply STOP to unsubscribe.
+                    </p>
+                  </label>
+                </div>
                 <button
                   type="submit"
                   disabled={status === "loading"}
@@ -171,31 +200,14 @@ export default function ContactPage() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </svg>
-                      Sending...
+                      Submitting...
                     </>
                   ) : (
-                    "Send message"
+                    "Submit"
                   )}
                 </button>
               </form>
             )}
-
-            {/* SMS Consent Section */}
-            <div className="mt-12 pt-8 border-t border-white/10">
-              <div className="flex items-center gap-2 mb-4">
-                <MessageSquare className="w-5 h-5 text-[#F59E0B]" />
-                <h3 className="text-white text-lg font-semibold">Get SMS Updates</h3>
-              </div>
-              <p className="text-gray-400 text-sm mb-4">
-                Sign up to receive exclusive updates and insights directly to your phone.
-              </p>
-              <div className="bg-white/5 border border-white/10 rounded-xl p-3">
-                <div
-                  data-tf-live="01KFQ0QG5YJX6BWNK90R8K1HB0"
-                  style={{ height: "500px", width: "100%" }}
-                />
-              </div>
-            </div>
           </div>
         </div>
       </main>
