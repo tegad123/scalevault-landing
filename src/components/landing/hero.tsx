@@ -40,7 +40,7 @@ export function Hero({ videoUrl }: HeroProps) {
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F59E0B]/10 border border-[#F59E0B]/20 text-[#F59E0B] text-sm font-medium">
             <CheckCircle className="w-4 h-4" />
-            87% Chargeback Win Rate — vs. 40% Industry Average
+            89% Chargeback Win Rate — vs. 40% Industry Average
           </span>
         </motion.div>
 

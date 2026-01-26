@@ -12,7 +12,7 @@ const stats = [
   },
   {
     icon: TrendingUp,
-    value: "87%",
+    value: "89%",
     label: "Chargeback Win Rate",
     description: "vs. 40% industry average",
   },

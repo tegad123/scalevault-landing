@@ -38,13 +38,13 @@ const features = [
   {
     icon: Shield,
     title: "Automatic Chargeback Protection",
-    subtitle: "Win 87% of disputes with one click",
+    subtitle: "Win 89% of disputes with one click",
     description:
       "Every student action is tracked automatically. Generate bank-ready evidence in 60 seconds.",
     highlights: [
       "Auto-tracks all activity",
       "One-click evidence generator",
-      "87% win rate",
+      "89% win rate",
     ],
     imagePosition: "right" as const,
     image: "/features/dispute-evidence.png",
