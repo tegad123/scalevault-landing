@@ -159,6 +159,38 @@ export function SolutionCards() {
             <FeatureBlock key={feature.title} feature={feature} index={index} />
           ))}
         </div>
+
+        {/* See It In Action - Demo Video */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mt-24 lg:mt-32"
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              See It In Action
+            </h3>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Watch how ScaleVault protects your revenue and gives you complete control
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 overflow-hidden shadow-2xl">
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  src="https://www.loom.com/embed/e87664cab79a4fb8a9d5be55776cdfe9"
+                  frameBorder="0"
+                  allowFullScreen
+                  className="absolute top-0 left-0 w-full h-full"
+                  allow="autoplay; fullscreen"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
