@@ -29,8 +29,24 @@ function getVideoEmbed(url: string) {
 
 export function Hero({ videoUrl }: HeroProps) {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20">
-      <div className="max-w-5xl mx-auto text-center">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
+      {/* Background Video - respects prefers-reduced-motion */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover motion-reduce:hidden"
+      >
+        <source src="/hero-bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/80" aria-hidden="true" />
+
+      {/* Content layer */}
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
