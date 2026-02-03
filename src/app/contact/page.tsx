@@ -3,13 +3,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
-import { Phone } from "lucide-react";
 
 const BOOKING_URL = "https://go.scalevault.ai/apply-761095";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
     smsConsent: false,
@@ -49,7 +49,7 @@ export default function ContactPage() {
       }
 
       setStatus("success");
-      setFormData({ name: "", email: "", phone: "", smsConsent: false });
+      setFormData({ firstName: "", lastName: "", email: "", phone: "", smsConsent: false });
     } catch (error) {
       setStatus("error");
       setErrorMessage(error instanceof Error ? error.message : "Something went wrong");
@@ -127,53 +127,73 @@ export default function ContactPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 {status === "error" && (
                   <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 text-red-400">
                     {errorMessage}
                   </div>
                 )}
                 <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    First Name <span className="text-red-400">*</span>
+                  </label>
                   <input
                     type="text"
-                    name="name"
-                    placeholder="Name"
-                    value={formData.name}
+                    name="firstName"
+                    placeholder="First Name"
+                    value={formData.firstName}
                     onChange={handleChange}
                     disabled={status === "loading"}
-                    className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent disabled:opacity-50"
+                    className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-4 py-3 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent disabled:opacity-50"
                     required
                   />
                 </div>
                 <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Last Name <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    placeholder="Last Name"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    disabled={status === "loading"}
+                    className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-4 py-3 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent disabled:opacity-50"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Email <span className="text-red-400">*</span>
+                  </label>
                   <input
                     type="email"
                     name="email"
-                    placeholder="Email address"
+                    placeholder="Email"
                     value={formData.email}
                     onChange={handleChange}
                     disabled={status === "loading"}
-                    className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent disabled:opacity-50"
+                    className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-4 py-3 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent disabled:opacity-50"
                     required
                   />
                 </div>
                 <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Phone className="w-4 h-4 text-[#F59E0B]" />
-                    <label className="text-white text-sm font-medium">Your mobile number</label>
-                  </div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Phone <span className="text-red-400">*</span>
+                  </label>
                   <input
                     type="tel"
                     name="phone"
-                    placeholder="(555) 123-4567"
+                    placeholder="Phone"
                     value={formData.phone}
                     onChange={handleChange}
                     disabled={status === "loading"}
-                    className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-6 py-4 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent disabled:opacity-50"
+                    className="w-full bg-white/10 text-white placeholder-gray-400 rounded-lg px-4 py-3 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[#F59E0B] focus:border-transparent disabled:opacity-50"
                     required
                   />
                 </div>
-                <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                <div className="pt-2">
                   <label className="flex items-start gap-3 cursor-pointer">
                     <input
                       type="checkbox"
@@ -184,11 +204,22 @@ export default function ContactPage() {
                       className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#F59E0B] focus:ring-[#F59E0B] focus:ring-offset-0 cursor-pointer"
                       required
                     />
-                    <p className="text-gray-400 text-sm">
-                      By submitting this form, you agree to receive SMS notifications related to your appointments or service requests. Message and data rates may apply. Reply STOP to unsubscribe.
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      By submitting this form, you agree to receive SMS messages from Scale Vault AI related to appointments and services you requested. Message & data rates may apply. Text STOP to opt out.
                     </p>
                   </label>
                 </div>
+                <p className="text-gray-400 text-sm">
+                  Consent is not a condition of purchase. Msg frequency varies. View our{" "}
+                  <Link href="/privacy-policy" className="text-white underline hover:text-[#F59E0B] transition-colors">
+                    Privacy Policy
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="/terms-of-service" className="text-white underline hover:text-[#F59E0B] transition-colors">
+                    Terms of Service
+                  </Link>
+                  .
+                </p>
                 <button
                   type="submit"
                   disabled={status === "loading"}

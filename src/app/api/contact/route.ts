@@ -3,15 +3,17 @@ import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, phone, smsConsent } = await request.json();
+    const { firstName, lastName, email, phone, smsConsent } = await request.json();
 
     // Validate input
-    if (!name || !email || !phone) {
+    if (!firstName || !lastName || !email || !phone) {
       return NextResponse.json(
-        { error: "Name, email, and phone number are required" },
+        { error: "First name, last name, email, and phone number are required" },
         { status: 400 }
       );
     }
+
+    const fullName = `${firstName} ${lastName}`;
 
     if (!smsConsent) {
       return NextResponse.json(
@@ -36,12 +38,13 @@ export async function POST(request: NextRequest) {
       from: process.env.GMAIL_USER,
       to: "tega@scalevault.ai",
       replyTo: email,
-      subject: `New SMS Opt-in from ${name}`,
+      subject: `New SMS Opt-in from ${fullName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #F59E0B;">New SMS Opt-in Submission</h2>
           <hr style="border: 1px solid #eee;" />
-          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>First Name:</strong> ${firstName}</p>
+          <p><strong>Last Name:</strong> ${lastName}</p>
           <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
           <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
           <p><strong>SMS Consent:</strong> <span style="color: #22c55e;">✓ Yes, opted in</span></p>
@@ -54,7 +57,8 @@ export async function POST(request: NextRequest) {
       text: `
 New SMS Opt-in Submission
 
-Name: ${name}
+First Name: ${firstName}
+Last Name: ${lastName}
 Email: ${email}
 Phone: ${phone}
 SMS Consent: Yes, opted in
