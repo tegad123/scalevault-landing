@@ -2,9 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { X, Menu } from "lucide-react";
 
-const BOOKING_URL = "https://go.scalevault.ai/apply-761095";
+const BOOKING_URL = "https://scalevault.ai/book-a-free-call";
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
@@ -20,11 +21,18 @@ export function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 transition-all duration-300 shadow-lg shadow-black/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div className="mx-auto px-8 lg:px-16 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-white font-bold text-xl tracking-tight">
-            Scale Vault AI
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logos/scalevault-logo.png"
+              alt="Scale Vault AI"
+              width={400}
+              height={120}
+              className="object-contain h-[32px] lg:h-[36px] w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav Links */}

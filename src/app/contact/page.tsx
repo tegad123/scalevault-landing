@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 
-const BOOKING_URL = "https://go.scalevault.ai/apply-761095";
+const BOOKING_URL = "https://scalevault.ai/book-a-free-call";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({

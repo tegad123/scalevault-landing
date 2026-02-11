@@ -2,28 +2,30 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Calendar } from "lucide-react";
+
+const BOOKING_URL = "https://scalevault.ai/book-a-free-call";
 
 const faqs = [
   {
-    question: "What is ScaleVault AI?",
+    question: "Do I need to change platforms?",
     answer:
-      "We build fully custom course platforms for high-ticket creators with built-in chargeback protection that you OWN. Every login, lesson, assignment, and message your students take is automatically tracked and timestamped—so when a chargeback hits, you generate ironclad dispute evidence in 60 seconds with one button click. This results in a 75%+ win rate (vs. 45% industry average), saving you $20K-$40K+ per year in lost revenue. You get a professional, branded platform WITHOUT renting Kajabi forever, and you have FREE, AUTOMATIC chargeback protection built in from day one.",
+      "No. We build a custom platform that integrates with your existing setup \u2014 your payment processor, email provider, and course content all stay where they are. We add the tracking and evidence layer on top so you get chargeback protection without disrupting anything.",
   },
   {
-    question: "How much is it?",
+    question: "Is this for low-ticket courses?",
     answer:
-      "We're not a marketing agency or SaaS company, so we're not going to charge you RIDICULOUS MONTHLY SUBSCRIPTIONS that add up to tens of thousands over the years. Us on the other hand, we build you a custom platform once, you own it forever, and monthly support is only $297/mo for hosting, maintenance, and new features. Book a free call and we'll give you an exact quote based on what you need built.",
+      "This solution is designed for creators selling programs at $2,000 and above. At that price point, even a handful of chargebacks per year can cost you $30K\u2013$50K in lost revenue. If you sell lower-ticket offers, the ROI may not justify the investment.",
   },
   {
-    question: "Why should you get ScaleVault AI?",
+    question: "What will I see on the call?",
     answer:
-      "The reason why our solution is so valuable to the high-ticket creators we've worked with is because they're winning 75%+ of chargeback disputes without ANY manual work. To get the same level of evidence on any other platform it would require you to manually request access logs from support, dig through emails, and compile everything yourself—costing you HOURS of work per dispute and often resulting in lost cases because the evidence is incomplete or late. All the dispute evidence you generate from us is going to be comprehensive and bank-ready since it's tracked automatically from day one: lesson completions, video watch percentages, assignment submissions, quiz scores, message history, login timestamps. Your win rate skyrockets to 75%+ compared to the 45% industry average on platforms like Kajabi or Teachable.",
+      "We\u2019ll walk you through a real bank-ready evidence packet so you can see exactly what gets submitted when a dispute hits. Then we\u2019ll review your current setup, identify gaps, and outline a 3-step chargeback defense plan tailored to your business.",
   },
   {
-    question: "What makes y'all different?",
+    question: "How fast can you implement this?",
     answer:
-      "We've helped clients protect $100K+ in revenue from chargebacks, so we know the ins and outs of high-ticket course businesses and what evidence wins disputes. We are a custom platform company, not a SaaS rental service, so you don't have to worry about paying INSANE monthly fees to Kajabi forever ($2,400-$6,000/year) for a platform you'll never own.\n\nHere's what sets us apart:\n\n1. You OWN the platform. Not renting software—you own the code, the data, everything. If you ever want to sell your business, this is a valuable asset.\n\n2. 75%+ chargeback win rate. Industry average is 45%. Our clients win 3 out of 4 disputes because the evidence is automatic, comprehensive, and bank-ready.\n\n3. Built for high-ticket creators. We specialize in trading coaches, business mentors, and educators charging $2K-$10K+ per student.\n\n4. Fully custom, not a template. This is designed for YOUR brand, YOUR students, YOUR business. No cookie-cutter themes.\n\n5. Fast delivery. We handle everything: design, development, content migration, training. Zero downtime.",
+      "It depends on the complexity of your course and how many modules you have. On the call we\u2019ll outline the full process \u2014 from design to launch \u2014 and give you a realistic timeline. Most clients are fully live and protected within a few weeks.",
   },
 ];
 
@@ -95,7 +97,7 @@ export function PricingCard() {
             Frequently Asked Questions
           </h2>
           <p className="text-gray-400 text-lg">
-            Answers to questions you might have about ScaleVault AI.
+            Common questions before booking a call.
           </p>
         </motion.div>
 
@@ -115,6 +117,28 @@ export function PricingCard() {
               onClick={() => handleClick(index)}
             />
           ))}
+        </motion.div>
+
+        {/* CTA after FAQ */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-10 text-center"
+        >
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#F59E0B] hover:bg-[#D97706] text-black font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-[#F59E0B]/25"
+          >
+            <Calendar className="w-5 h-5" />
+            Book Free 30-Min Call
+          </a>
+          <p className="mt-3 text-sm text-gray-500">
+            Free consultation &bull; No commitment required
+          </p>
         </motion.div>
       </div>
     </section>

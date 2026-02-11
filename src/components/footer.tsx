@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const PAGES_LINKS = [
   { name: "Home", href: "/" },
@@ -20,6 +21,17 @@ export function Footer() {
   return (
     <footer id="contact" className="bg-black border-t border-white/10 py-16 px-8">
       <div className="container mx-auto">
+        {/* Logo */}
+        <div className="flex justify-center mb-12">
+          <Image
+            src="/logos/scalevault-logo.png"
+            alt="Scale Vault"
+            width={180}
+            height={60}
+            className="object-contain"
+          />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl mx-auto mb-12">
           {/* Pages Column */}
           <div>
