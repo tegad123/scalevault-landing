@@ -21,17 +21,16 @@ export function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 transition-all duration-300 shadow-lg shadow-black/20">
-      <div className="mx-auto px-8 lg:px-16 py-4">
-        <div className="flex items-center justify-between">
+      <div className="w-full pl-0 pr-2 md:pl-1 md:pr-4">
+        <div className="flex items-center justify-between h-24 md:h-28">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image
+          <Link href="/" className="flex items-center shrink-0 -ml-1">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/logos/scalevault-logo.png"
               alt="Scale Vault AI"
-              width={400}
-              height={120}
-              className="object-contain h-[32px] lg:h-[36px] w-auto"
-              priority
+              className="object-contain"
+              style={{ height: "clamp(64px, 7vw, 110px)", width: "auto" }}
             />
           </Link>
 

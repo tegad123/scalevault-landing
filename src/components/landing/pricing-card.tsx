@@ -8,24 +8,44 @@ const BOOKING_URL = "https://scalevault.ai/book-a-free-call";
 
 const faqs = [
   {
-    question: "Do I need to change platforms?",
+    question: "Who is this for?",
     answer:
-      "No. We build a custom platform that integrates with your existing setup \u2014 your payment processor, email provider, and course content all stay where they are. We add the tracking and evidence layer on top so you get chargeback protection without disrupting anything.",
+      "Course creators selling $2K+ programs who want to own their platform and stop losing chargebacks.",
   },
   {
-    question: "Is this for low-ticket courses?",
+    question: "What do you build?",
     answer:
-      "This solution is designed for creators selling programs at $2,000 and above. At that price point, even a handful of chargebacks per year can cost you $30K\u2013$50K in lost revenue. If you sell lower-ticket offers, the ROI may not justify the investment.",
+      "A custom course platform you own \u2014 with built-in tracking that logs every login, lesson view, and quiz attempt. When a dispute hits, you export a one-click evidence package. 89% win rate.",
   },
   {
-    question: "What will I see on the call?",
+    question: "How much does it cost?",
     answer:
-      "We\u2019ll walk you through a real bank-ready evidence packet so you can see exactly what gets submitted when a dispute hits. Then we\u2019ll review your current setup, identify gaps, and outline a 3-step chargeback defense plan tailored to your business.",
+      "We build a quote for you based on your needs. We\u2019ll cover exact scope and investment on the call.",
   },
   {
-    question: "How fast can you implement this?",
+    question: "How long does it take?",
     answer:
-      "It depends on the complexity of your course and how many modules you have. On the call we\u2019ll outline the full process \u2014 from design to launch \u2014 and give you a realistic timeline. Most clients are fully live and protected within a few weeks.",
+      "Most platforms launch in 1\u20132 weeks. We handle design, development, migration, QA, and handoff.",
+  },
+  {
+    question: "Do I need to be technical?",
+    answer:
+      "No. You give us your content and branding. We build, test, and hand you the keys.",
+  },
+  {
+    question: "How is this different from Kajabi or Skool?",
+    answer:
+      "You own it. No rent, no TOS changes, no platform risk. And none of them track activity in a way that wins chargebacks \u2014 ours does by default.",
+  },
+  {
+    question: "Is this call a sales pitch?",
+    answer:
+      "It\u2019s a 30-minute strategy call. We\u2019ll assess your setup, estimate your chargeback exposure, and tell you if we\u2019re a fit.",
+  },
+  {
+    question: "What if I\u2019m not sure I have a chargeback problem?",
+    answer:
+      "If you sell above $2K, you do. Each chargeback costs 3.75x the transaction in fees and processor risk. One call and we can estimate your real exposure.",
   },
 ];
 

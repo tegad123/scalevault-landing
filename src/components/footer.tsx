@@ -19,16 +19,16 @@ const SOCIAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer id="contact" className="bg-black border-t border-white/10 py-16 px-8">
+    <footer id="contact" className="bg-black border-t border-white/10 py-16 px-6 md:px-10">
       <div className="container mx-auto">
         {/* Logo */}
-        <div className="flex justify-center mb-12">
-          <Image
+        <div className="flex justify-center items-center mb-12">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/logos/scalevault-logo.png"
             alt="Scale Vault"
-            width={180}
-            height={60}
-            className="object-contain"
+            className="object-contain opacity-90"
+            style={{ height: 96, width: "auto" }}
           />
         </div>
 
