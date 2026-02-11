@@ -22,7 +22,7 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 transition-all duration-300 shadow-lg shadow-black/20">
       <div className="w-full pl-2 pr-4 md:pl-4 md:pr-8">
-        <div className="flex items-center justify-between h-16 md:h-28">
+        <div className="flex items-center justify-between h-24 md:h-28">
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0 -ml-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -30,7 +30,7 @@ export function Navbar() {
               src="/logos/scalevault-logo.png"
               alt="Scale Vault AI"
               className="object-contain"
-              style={{ height: "clamp(32px, 7vw, 110px)", width: "auto" }}
+              style={{ height: "clamp(80px, 10vw, 110px)", width: "auto" }}
             />
           </Link>
 
