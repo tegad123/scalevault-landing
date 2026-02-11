@@ -48,7 +48,7 @@ export default function BookCallPage() {
             }}
           >
             <iframe
-              src="https://go.scalevault.ai/book-a-call"
+              src="https://book.scalevault.ai/booking-step"
               width="100%"
               height="800"
               frameBorder="0"

@@ -12,7 +12,7 @@ const nextConfig = {
     return [
       {
         source: "/book-a-free-call",
-        destination: "https://go.scalevault.ai/booking-step",
+        destination: "https://book.scalevault.ai/booking-step",
         permanent: false,
       },
     ];
