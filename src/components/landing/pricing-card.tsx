@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Calendar } from "lucide-react";
 
-const BOOKING_URL = "https://scalevault.ai/book-a-free-call";
+const BOOKING_URL = "/book-a-free-call";
 
 const faqs = [
   {

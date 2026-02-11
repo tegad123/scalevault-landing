@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
 
-const BOOKING_URL = "https://scalevault.ai/book-a-free-call";
+const BOOKING_URL = "/book-a-free-call";
 
 export function FinalCTA() {
   return (
