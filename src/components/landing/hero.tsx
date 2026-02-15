@@ -67,8 +67,8 @@ export function Hero({ videoUrl }: HeroProps) {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-white"
         >
-          You&apos;re One Chargeback Away From{" "}
-          <span className="text-[#F59E0B]">Losing Your Payment Processor</span>
+          High-Ticket Creators Lose Thousands to Chargebacks{" "}
+          <span className="text-[#F59E0B]">They Could Have Won.</span>
         </motion.h1>
 
         {/* Subheadline */}
