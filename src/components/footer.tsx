@@ -12,9 +12,7 @@ const PAGES_LINKS = [
 const COMPANY_LINKS = [{ name: "Contact", href: "/contact" }];
 
 const SOCIAL_LINKS = [
-  { name: "YouTube", href: "#" },
-  { name: "Instagram", href: "#" },
-  { name: "LinkedIn", href: "#" },
+  { name: "Instagram", href: "https://www.instagram.com/scalevault.ai/" },
 ];
 
 export function Footer() {
@@ -75,8 +73,10 @@ export function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
-                >
+                  >
                     {link.name}
                   </a>
               </li>

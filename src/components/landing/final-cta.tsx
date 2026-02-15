@@ -69,26 +69,15 @@ export function FinalCTA() {
             </motion.a>
           </motion.div>
 
-          <motion.div
+          <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-500"
+            className="mt-6 text-base md:text-lg text-gray-300/85 italic"
           >
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-              Free 30-minute consultation
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-              No commitment required
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-              Limited spots available
-            </span>
-          </motion.div>
+            Every dispute you lose without us is a dispute you could have won.
+          </motion.p>
         </motion.div>
       </div>
     </section>

@@ -1,26 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { DollarSign, TrendingUp, Clock } from "lucide-react";
+import { Zap, TrendingUp, Shield } from "lucide-react";
 
 const stats = [
   {
-    icon: DollarSign,
-    value: "$200K+",
-    label: "Revenue Protected",
-    description: "From fraudulent chargebacks",
+    icon: Zap,
+    value: "60s",
+    label: "Bank-Ready Evidence",
+    description: "Generate a full proof packet in seconds",
   },
   {
     icon: TrendingUp,
     value: "89%",
-    label: "Chargeback Win Rate",
-    description: "vs. 40% industry average",
+    label: "Win Rate",
+    description: "With proper evidence submission",
   },
   {
-    icon: Clock,
-    value: "5+",
-    label: "Years Experience",
-    description: "In platform development",
+    icon: Shield,
+    value: "100%",
+    label: "You Own Everything",
+    description: "Code, data, and platform — all yours",
   },
 ];
 
@@ -36,10 +36,10 @@ export function Stats() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Results That Speak for Themselves
+            Built to Protect Your Revenue
           </h2>
           <p className="text-gray-400 text-lg">
-            Built on proven technology and real-world results
+            A platform you own, with evidence that holds up
           </p>
         </motion.div>
 

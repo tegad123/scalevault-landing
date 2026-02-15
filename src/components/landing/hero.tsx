@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, CheckCircle, Check } from "lucide-react";
+import { Calendar, CheckCircle } from "lucide-react";
 
 const BOOKING_URL = "/book-a-free-call";
 
@@ -67,42 +67,36 @@ export function Hero({ videoUrl }: HeroProps) {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-white"
         >
-          Stop Losing{" "}
-          <span className="text-[#F59E0B]">$30K+/Year</span>{" "}
-          to Chargebacks
+          You&apos;re One Chargeback Away From{" "}
+          <span className="text-[#F59E0B]">Losing Your Payment Processor</span>
         </motion.h1>
-
-        {/* Qualifier */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-base md:text-lg text-gray-400 mt-5 max-w-2xl mx-auto leading-relaxed"
-        >
-          For course creators &amp; coaches selling{" "}
-          <span className="text-white font-medium">$2K–$10K offers</span>.
-          <br className="hidden sm:block" />{" "}
-          Whether you&apos;ve had chargebacks or want a defense system before they hit.
-        </motion.p>
 
         {/* Subheadline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-400 mt-4 max-w-3xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl text-gray-400 mt-6 max-w-3xl mx-auto leading-relaxed"
         >
-          We build custom course platforms with{" "}
-          <span className="text-white font-medium">automatic chargeback protection</span>.
-          Every login, lesson, and assignment is tracked — so you win disputes with one click.
+          We build course platforms you own — with built-in chargeback protection that wins disputes automatically.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* Confidence line */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="text-base md:text-lg text-gray-300/85 italic mt-4 max-w-2xl mx-auto"
+        >
+          Every dispute you lose without us is a dispute you could have won.
+        </motion.p>
+
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-8 flex flex-col items-center gap-4"
+          className="mt-8"
         >
           <a
             href={BOOKING_URL}
@@ -111,43 +105,9 @@ export function Hero({ videoUrl }: HeroProps) {
             className="inline-flex items-center gap-2 bg-[#F59E0B] hover:bg-[#D97706] text-black font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-[#F59E0B]/25"
           >
             <Calendar className="w-5 h-5" />
-            Book Free 30-Min Call
-          </a>
-
-          {/* Micro-offer bullets */}
-          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 mt-2">
-            <span className="flex items-center gap-2 text-sm text-gray-300">
-              <Check className="w-4 h-4 text-[#F59E0B]" />
-              See a bank-ready evidence packet
-            </span>
-            <span className="flex items-center gap-2 text-sm text-gray-300">
-              <Check className="w-4 h-4 text-[#F59E0B]" />
-              Find gaps in your current setup
-            </span>
-            <span className="flex items-center gap-2 text-sm text-gray-300">
-              <Check className="w-4 h-4 text-[#F59E0B]" />
-              Leave with a 3-step defense plan
-            </span>
-          </div>
-
-          {/* Secondary scroll link */}
-          <a
-            href="#proof-preview"
-            className="text-sm text-gray-500 hover:text-[#F59E0B] transition-colors mt-1 underline underline-offset-4"
-          >
-            See what you&apos;ll get on the call
+            Book a Free 30-Min Call
           </a>
         </motion.div>
-
-        {/* Trust Signal */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-4 text-sm text-gray-500"
-        >
-          Free 30-minute consultation • No commitment required
-        </motion.p>
 
         {/* Video Section */}
         {videoUrl && (

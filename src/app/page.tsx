@@ -10,6 +10,7 @@ import { Testimonial } from "@/components/landing/testimonial";
 import { PricingCard } from "@/components/landing/pricing-card";
 import { FinalCTA } from "@/components/landing/final-cta";
 import { ProofPreview } from "@/components/landing/proof-preview";
+import { Comparison } from "@/components/landing/comparison";
 import { MobileStickyCTA } from "@/components/mobile-sticky-cta";
 
 export default function Home() {
@@ -28,6 +29,9 @@ export default function Home() {
 
         {/* Stats & metrics */}
         <Stats />
+
+        {/* Comparison: why not competitors */}
+        <Comparison />
 
         {/* Testimonials */}
         <Testimonial />

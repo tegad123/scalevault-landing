@@ -8,3 +8,4 @@ export { Testimonial } from "./testimonial";
 export { PricingCard } from "./pricing-card";
 export { FinalCTA } from "./final-cta";
 export { ProofPreview } from "./proof-preview";
+export { Comparison } from "./comparison";

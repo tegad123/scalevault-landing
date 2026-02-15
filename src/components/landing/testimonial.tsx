@@ -6,7 +6,7 @@ import Image from "next/image";
 const testimonials = [
   {
     quote:
-      "ScaleVault built me a custom platform I actually own—no more being stuck on Skool's basic setup. When a client tried to dispute after completing my entire AI strategy program, I had full proof of their engagement. Won the case in days.",
+      "I told ScaleVault AI I needed a platform I actually owned — not another Skool page that looks like everyone else's. They built it, handed me the keys, and I have full control over my branding, my data, and how my students experience the program. That's how it should be when you're charging premium prices.",
     name: "Norman Wang",
     company: "CEO @ Lead Oracle",
     image: "/testimonials/norman-wang.jpg",
@@ -14,19 +14,19 @@ const testimonials = [
   },
   {
     quote:
-      "Running high-ticket Amazon FBA coaching, chargebacks were killing my margins. Scale Vault's platform tracks every student interaction. I've saved thousands in disputes I would have lost before.",
-    name: "Jaese",
-    company: "Founder @ Growth Acquisitions Inc",
-    image: "/testimonials/jaese.jpg",
-    highlight: "Amazon FBA Coaching",
-  },
-  {
-    quote:
-      "In day trading education, you get students who complete everything, profit from your strategies, then dispute. ScaleVault tracks every lesson, trade log, and login. When the inevitable chargebacks hit, I have bulletproof evidence. Saved me $10K+ last quarter alone.",
+      "I was running my course with zero tracking — if a student disputed, I had nothing to show the bank. ScaleVault AI built me a platform that logs every login, every lesson, every quiz automatically. I haven't had to fight a dispute yet, but I know when it happens, I'm covered. That peace of mind alone was worth it.",
     name: "Dae .E",
     company: "@Daetradez",
     image: "/testimonials/daetradez.png",
     highlight: "Day Trading Education",
+  },
+  {
+    quote:
+      "Running high-ticket coaching, I knew it was a matter of time before disputes started hitting. I didn't want to wait until I lost one to figure it out. ScaleVault AI set me up with a platform that tracks everything my students do — I finally feel like I have a real business infrastructure, not just a course on someone else's platform.",
+    name: "Jaese",
+    company: "Founder @ Growth Acquisitions Inc",
+    image: "/testimonials/jaese.jpg",
+    highlight: "Amazon FBA Coaching",
   },
 ];
 

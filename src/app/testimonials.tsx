@@ -3,21 +3,21 @@
 const TESTIMONIALS = [
   {
     quote:
-      "We were spending 20+ hours a week on student support. Scale Vault AI's chatbot cut that to 3 hours. Our students get instant answers and we get our time back.",
-    name: "Sarah M.",
-    business: "Trading Academy Founder",
+      "I told ScaleVault AI I needed a platform I actually owned — not another Skool page that looks like everyone else's. They built it, handed me the keys, and I have full control over my branding, my data, and how my students experience the program. That's how it should be when you're charging premium prices.",
+    name: "Norman Wang",
+    business: "CEO @ Lead Oracle",
   },
   {
     quote:
-      "The AI sales agent books qualified calls while I sleep. We've closed $50K in new students in the first month without any extra work on our end.",
-    name: "Mike R.",
-    business: "Finance Coach",
+      "I was running my course with zero tracking — if a student disputed, I had nothing to show the bank. ScaleVault AI built me a platform that logs every login, every lesson, every quiz automatically. I haven't had to fight a dispute yet, but I know when it happens, I'm covered. That peace of mind alone was worth it.",
+    name: "Dae .E",
+    business: "@Daetradez",
   },
   {
     quote:
-      "I was skeptical about AI, but the results speak for themselves. Our student engagement is up 40% and I'm finally able to focus on creating content instead of answering DMs.",
-    name: "Lisa K.",
-    business: "Business Mentor",
+      "Running high-ticket coaching, I knew it was a matter of time before disputes started hitting. I didn't want to wait until I lost one to figure it out. ScaleVault AI set me up with a platform that tracks everything my students do — I finally feel like I have a real business infrastructure, not just a course on someone else's platform.",
+    name: "Jaese",
+    business: "Founder @ Growth Acquisitions Inc",
   },
 ];
 
