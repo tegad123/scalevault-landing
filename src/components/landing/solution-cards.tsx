@@ -134,7 +134,7 @@ function FeatureBlock({
 
 export function SolutionCards() {
   return (
-    <section className="py-24 px-4">
+    <section id="how-it-works" className="py-24 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -180,13 +180,16 @@ export function SolutionCards() {
           <div className="max-w-4xl mx-auto">
             <div className="rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 overflow-hidden shadow-2xl">
               <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  src="https://www.loom.com/embed/e87664cab79a4fb8a9d5be55776cdfe9"
-                  frameBorder="0"
-                  allowFullScreen
-                  className="absolute top-0 left-0 w-full h-full"
-                  allow="autoplay; fullscreen"
-                ></iframe>
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="absolute top-0 left-0 w-full h-full object-contain bg-black"
+                  title="ScaleVault AI - See It In Action"
+                  suppressHydrationWarning
+                >
+                  <source src="/scalevault-demo.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
           </div>

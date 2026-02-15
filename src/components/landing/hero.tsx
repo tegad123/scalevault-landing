@@ -5,29 +5,7 @@ import { Calendar, CheckCircle } from "lucide-react";
 
 const BOOKING_URL = "/book-a-free-call";
 
-interface HeroProps {
-  videoUrl?: string;
-}
-
-function getVideoEmbed(url: string) {
-  if (url.includes("youtube.com") || url.includes("youtu.be")) {
-    const videoId = url.includes("youtu.be")
-      ? url.split("youtu.be/")[1]?.split("?")[0]
-      : url.split("v=")[1]?.split("&")[0];
-    return `https://www.youtube.com/embed/${videoId}`;
-  }
-  if (url.includes("loom.com")) {
-    const loomId = url.split("/share/")[1]?.split("?")[0];
-    return `https://www.loom.com/embed/${loomId}`;
-  }
-  if (url.includes("vimeo.com")) {
-    const vimeoId = url.split("vimeo.com/")[1]?.split("?")[0];
-    return `https://player.vimeo.com/video/${vimeoId}`;
-  }
-  return url;
-}
-
-export function Hero({ videoUrl }: HeroProps) {
+export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
       {/* Background Video - respects prefers-reduced-motion */}
@@ -109,28 +87,6 @@ export function Hero({ videoUrl }: HeroProps) {
           </a>
         </motion.div>
 
-        {/* Video Section */}
-        {videoUrl && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-16 max-w-4xl mx-auto"
-          >
-            <div className="aspect-video rounded-2xl shadow-2xl overflow-hidden border border-white/10 bg-white/5">
-              <iframe
-                src={getVideoEmbed(videoUrl)}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title="Scale Vault AI - How We Protect Your Revenue"
-              />
-            </div>
-            <p className="mt-4 text-sm text-gray-500">
-              Watch: How we help course creators protect their revenue
-            </p>
-          </motion.div>
-        )}
       </div>
     </section>
   );

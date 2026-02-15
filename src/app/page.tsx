@@ -9,7 +9,7 @@ import { Stats } from "@/components/landing/stats";
 import { Testimonial } from "@/components/landing/testimonial";
 import { PricingCard } from "@/components/landing/pricing-card";
 import { FinalCTA } from "@/components/landing/final-cta";
-import { ProofPreview } from "@/components/landing/proof-preview";
+
 import { Comparison } from "@/components/landing/comparison";
 import { MobileStickyCTA } from "@/components/mobile-sticky-cta";
 
@@ -19,7 +19,7 @@ export default function Home() {
       <Navbar />
       <main className="min-h-screen pb-16 lg:pb-0">
         {/* Hero with video */}
-        <Hero videoUrl={process.env.NEXT_PUBLIC_LANDING_VIDEO_URL} />
+        <Hero />
 
         {/* The problem we solve */}
         <ProblemCards />
@@ -35,9 +35,6 @@ export default function Home() {
 
         {/* Testimonials */}
         <Testimonial />
-
-        {/* Proof Preview */}
-        <ProofPreview />
 
         {/* FAQ */}
         <PricingCard />

@@ -10,42 +10,32 @@ const faqs = [
   {
     question: "Who is this for?",
     answer:
-      "Course creators selling $2K+ programs who want to own their platform and stop losing chargebacks.",
+      "Course creators and coaches selling $2K\u2013$10K+ programs \u2014 especially in day trading, business coaching, and high-ticket education. If you\u2019re processing significant revenue and chargebacks are a real risk to your business, this is built for you.",
   },
   {
     question: "What do you build?",
     answer:
-      "A custom course platform you own \u2014 with built-in tracking that logs every login, lesson view, and quiz attempt. When a dispute hits, you export a one-click evidence package. 89% win rate.",
+      "A fully custom course platform that you own \u2014 not rent. It includes student and admin portals, content delivery, and built-in chargeback protection that automatically tracks every login, lesson, and quiz your students complete. When a dispute hits, you generate bank-ready evidence in 60 seconds.",
   },
   {
     question: "How much does it cost?",
     answer:
-      "We build a quote for you based on your needs. We\u2019ll cover exact scope and investment on the call.",
+      "Projects start at $5,000 for the full platform build, plus optional monthly hosting and maintenance. You\u2019ll own everything \u2014 the code, the data, the platform. We\u2019ll cover exact pricing on the call based on your course structure and needs.",
   },
   {
     question: "How long does it take?",
     answer:
-      "Most platforms launch in 1\u20132 weeks. We handle design, development, migration, QA, and handoff.",
+      "Most platforms are built and launched within 2\u20133 weeks. We handle everything \u2014 design, development, content migration, and QA. You review, approve, and go live.",
   },
   {
     question: "Do I need to be technical?",
     answer:
-      "No. You give us your content and branding. We build, test, and hand you the keys.",
+      "No. You fill out an intake form, give us your course content, and we handle the rest. Your platform comes with a simple admin dashboard \u2014 if you can use Kajabi or Skool, you can use this.",
   },
   {
-    question: "How is this different from Kajabi or Skool?",
+    question: "What if I haven\u2019t had a chargeback yet?",
     answer:
-      "You own it. No rent, no TOS changes, no platform risk. And none of them track activity in a way that wins chargebacks \u2014 ours does by default.",
-  },
-  {
-    question: "Is this call a sales pitch?",
-    answer:
-      "It\u2019s a 30-minute strategy call. We\u2019ll assess your setup, estimate your chargeback exposure, and tell you if we\u2019re a fit.",
-  },
-  {
-    question: "What if I\u2019m not sure I have a chargeback problem?",
-    answer:
-      "If you sell above $2K, you do. Each chargeback costs 3.75x the transaction in fees and processor risk. One call and we can estimate your real exposure.",
+      "If you sell above $2K, you will. Every dispute costs you the sale, the fees, and your processor\u2019s trust. A few bad months and they cut you off. One call and we\u2019ll estimate your real exposure.",
   },
 ];
 
@@ -104,7 +94,7 @@ export function PricingCard() {
   };
 
   return (
-    <section className="py-20 px-4">
+    <section id="faq" className="py-20 px-4">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
