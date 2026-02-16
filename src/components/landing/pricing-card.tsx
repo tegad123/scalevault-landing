@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "How long does it take?",
     answer:
-      "Most platforms are built and launched within 2\u20133 weeks. We handle everything \u2014 design, development, content migration, and QA. You review, approve, and go live.",
+      "Most platforms are built and launched within 1\u20132 weeks. We handle everything \u2014 design, development, content migration, and QA. You review, approve, and go live.",
   },
   {
     question: "Do I need to be technical?",
